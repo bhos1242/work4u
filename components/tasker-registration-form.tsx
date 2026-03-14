@@ -7,7 +7,6 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -15,10 +14,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { Loader2, CheckCircle } from "lucide-react";
 
 const SERVICE_AREAS = [
   "Shivajinagar", "Model Colony", "Bhosle Nagar", "Kothrud", "Karve Nagar",
@@ -99,26 +97,26 @@ export function TaskerRegistrationForm() {
   }
 
   return (
-    <Card className="max-w-2xl mx-auto border border-border">
-      <CardContent className="pt-6">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+    <div className="max-w-lg mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-card rounded-xl border border-border p-5">
+        {/* Name & Mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <Label htmlFor="tasker-name">Full Name *</Label>
+            <Label htmlFor="tasker-name" className="text-xs font-semibold">Full Name</Label>
             <Input
               id="tasker-name"
               {...register("name")}
               placeholder="Your full name"
-              className="mt-1.5 min-h-12"
+              className="mt-1 h-10 text-sm"
             />
             {errors.name && (
-              <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+              <p className="text-xs text-destructive mt-0.5">{errors.name.message}</p>
             )}
           </div>
-
           <div>
-            <Label htmlFor="tasker-mobile">Mobile Number *</Label>
-            <div className="flex items-center gap-2 mt-1.5">
-              <span className="text-sm text-muted-foreground px-3 py-2 bg-surface rounded-lg border border-border min-h-12 flex items-center">
+            <Label htmlFor="tasker-mobile" className="text-xs font-semibold">Mobile Number</Label>
+            <div className="flex items-center gap-1.5 mt-1">
+              <span className="text-xs text-muted-foreground px-2 bg-surface rounded-lg border border-border h-10 flex items-center">
                 +91
               </span>
               <Input
@@ -126,21 +124,24 @@ export function TaskerRegistrationForm() {
                 {...register("mobile")}
                 placeholder="9876543210"
                 maxLength={10}
-                className="min-h-12"
+                className="h-10 text-sm"
               />
             </div>
             {errors.mobile && (
-              <p className="text-sm text-destructive mt-1">{errors.mobile.message}</p>
+              <p className="text-xs text-destructive mt-0.5">{errors.mobile.message}</p>
             )}
           </div>
+        </div>
 
+        {/* Location & Residence */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <Label htmlFor="tasker-location">Current Location/Area *</Label>
+            <Label htmlFor="tasker-location" className="text-xs font-semibold">Area</Label>
             <Select
               onValueChange={(val) => setValue("location", val, { shouldValidate: true })}
             >
-              <SelectTrigger className="mt-1.5 min-h-12" id="tasker-location">
-                <SelectValue placeholder="Select your area" />
+              <SelectTrigger className="mt-1 h-10 text-sm" id="tasker-location">
+                <SelectValue placeholder="Select area" />
               </SelectTrigger>
               <SelectContent>
                 {SERVICE_AREAS.map((area) => (
@@ -151,112 +152,116 @@ export function TaskerRegistrationForm() {
               </SelectContent>
             </Select>
             {errors.location && (
-              <p className="text-sm text-destructive mt-1">{errors.location.message}</p>
+              <p className="text-xs text-destructive mt-0.5">{errors.location.message}</p>
             )}
           </div>
-
           <div>
-            <Label>Residence Type *</Label>
+            <Label className="text-xs font-semibold">Residence</Label>
             <RadioGroup
               defaultValue="Room"
               onValueChange={(val) => setValue("residence", val as "Room" | "Hostel", { shouldValidate: true })}
-              className="flex gap-6 mt-2"
+              className="flex gap-4 mt-2.5"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <RadioGroupItem value="Room" id="res-room" />
-                <Label htmlFor="res-room" className="cursor-pointer">Room</Label>
+                <Label htmlFor="res-room" className="cursor-pointer text-sm">Room</Label>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <RadioGroupItem value="Hostel" id="res-hostel" />
-                <Label htmlFor="res-hostel" className="cursor-pointer">Hostel</Label>
+                <Label htmlFor="res-hostel" className="cursor-pointer text-sm">Hostel</Label>
               </div>
             </RadioGroup>
           </div>
+        </div>
 
+        {/* College & Course */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <Label htmlFor="tasker-college">College Name *</Label>
+            <Label htmlFor="tasker-college" className="text-xs font-semibold">College</Label>
             <Input
               id="tasker-college"
               {...register("college")}
               placeholder="Your college name"
-              className="mt-1.5 min-h-12"
+              className="mt-1 h-10 text-sm"
             />
             {errors.college && (
-              <p className="text-sm text-destructive mt-1">{errors.college.message}</p>
+              <p className="text-xs text-destructive mt-0.5">{errors.college.message}</p>
             )}
           </div>
-
           <div>
-            <Label htmlFor="tasker-course">Course *</Label>
+            <Label htmlFor="tasker-course" className="text-xs font-semibold">Course</Label>
             <Input
               id="tasker-course"
               {...register("course")}
-              placeholder="e.g., B.Tech Computer Science"
-              className="mt-1.5 min-h-12"
+              placeholder="e.g., B.Tech CS"
+              className="mt-1 h-10 text-sm"
             />
             {errors.course && (
-              <p className="text-sm text-destructive mt-1">{errors.course.message}</p>
+              <p className="text-xs text-destructive mt-0.5">{errors.course.message}</p>
             )}
           </div>
+        </div>
 
-          <div>
-            <Label htmlFor="tasker-year">Year of Study *</Label>
-            <Select
-              defaultValue="First"
-              onValueChange={(val) =>
-                setValue("yearOfStudy", val as TaskerFormData["yearOfStudy"], { shouldValidate: true })
-              }
-            >
-              <SelectTrigger className="mt-1.5 min-h-12" id="tasker-year">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {["First", "Second", "Third", "Fourth"].map((y) => (
-                  <SelectItem key={y} value={y}>
-                    {y} Year
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <Label>Skills *</Label>
-            <p className="text-sm text-muted-foreground mb-2">
-              Select all skills that apply
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {SKILLS.map((skill) => (
-                <div key={skill} className="flex items-center gap-2">
-                  <Checkbox
-                    id={`skill-${skill}`}
-                    checked={selectedSkills?.includes(skill)}
-                    onCheckedChange={() => toggleSkill(skill)}
-                  />
-                  <Label
-                    htmlFor={`skill-${skill}`}
-                    className="text-sm cursor-pointer"
-                  >
-                    {skill}
-                  </Label>
-                </div>
-              ))}
-            </div>
-            {errors.skills && (
-              <p className="text-sm text-destructive mt-1">{errors.skills.message}</p>
-            )}
-          </div>
-
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary-dark min-h-12 font-semibold rounded-lg text-base"
+        {/* Year */}
+        <div>
+          <Label htmlFor="tasker-year" className="text-xs font-semibold">Year of Study</Label>
+          <Select
+            defaultValue="First"
+            onValueChange={(val) =>
+              setValue("yearOfStudy", val as TaskerFormData["yearOfStudy"], { shouldValidate: true })
+            }
           >
-            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Register as Helper
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+            <SelectTrigger className="mt-1 h-10 text-sm max-w-40" id="tasker-year">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {["First", "Second", "Third", "Fourth"].map((y) => (
+                <SelectItem key={y} value={y}>
+                  {y} Year
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Skills */}
+        <div>
+          <Label className="text-xs font-semibold">Skills</Label>
+          <p className="text-[10px] text-muted-foreground mb-2">Select all that apply</p>
+          <div className="flex flex-wrap gap-2">
+            {SKILLS.map((skill) => {
+              const selected = selectedSkills?.includes(skill);
+              return (
+                <button
+                  key={skill}
+                  type="button"
+                  onClick={() => toggleSkill(skill)}
+                  className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                    selected
+                      ? "bg-primary/10 border-primary text-primary"
+                      : "bg-card border-border text-muted-foreground hover:border-primary/50"
+                  }`}
+                >
+                  {selected && <CheckCircle className="h-3 w-3" />}
+                  {skill}
+                </button>
+              );
+            })}
+          </div>
+          {errors.skills && (
+            <p className="text-xs text-destructive mt-1">{errors.skills.message}</p>
+          )}
+        </div>
+
+        <Button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-primary text-primary-foreground hover:bg-primary-dark h-10 font-semibold rounded-lg text-sm"
+        >
+          {loading && <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />}
+          Register as Helper
+        </Button>
+      </form>
+    </div>
   );
 }
