@@ -17,28 +17,28 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "Elder Care & Home Services in Pune",
   description:
-    "Explore our range of home services including senior caretaking, home tutoring, and computer/tech support by verified student helpers in Pune.",
+    "Compassionate elder care, home tutoring, and tech help by Aadhar-verified student caregivers in Pune. Trusted by 500+ families. Starting at ₹99.",
 };
 
 const activeServices = [
   {
     icon: HeartHandshake,
-    title: "Caretaking for Seniors",
+    title: "Elder Care & Companionship",
     description:
-      "Compassionate, trained student helpers provide daily care and companionship for senior citizens. Our helpers are patient, respectful, and committed to making every day comfortable for your loved ones.",
+      "Your parents deserve more than just physical help — they need someone who listens, cares, and shows up every day. Our Aadhar-verified student caregivers are trained in patience, empathy, and elder-friendly communication. Whether it's sharing chai and conversation or helping with daily routines, we bring warmth to your loved one's day.",
     subServices: [
-      "Daily companionship and conversation",
+      "Daily companionship and meaningful conversation",
       "Meal preparation and feeding assistance",
-      "Medicine reminders and health monitoring",
+      "Medicine reminders and health check-ins",
       "Light housekeeping and organizing",
-      "Mobility support and walking assistance",
-      "Reading newspapers/books aloud",
-      "Accompanying to doctor visits",
+      "Mobility support and morning/evening walks",
+      "Reading newspapers and books aloud",
+      "Accompanying to doctor visits and errands",
     ],
     cta: "/post-work?category=Senior+Citizens+Caretaking",
-    ctaLabel: "Book Caretaking",
+    ctaLabel: "Book Elder Care",
     featured: true,
     gradient: "from-emerald-500 to-teal-600",
     iconBg: "bg-emerald-500/10",
@@ -48,11 +48,11 @@ const activeServices = [
     icon: BookOpen,
     title: "Home Tutoring",
     description:
-      "Personalized one-on-one tutoring at your home by college students who excel in academics.",
+      "College students who bring fresh energy to learning. One-on-one tutoring at your doorstep, tailored to your child's pace and school curriculum.",
     subServices: [
       "Math tutoring (all levels)",
-      "Science tutoring (Physics, Chemistry, Biology)",
-      "Language tutoring (English, Hindi, Marathi)",
+      "Science (Physics, Chemistry, Biology)",
+      "Language coaching (English, Hindi, Marathi)",
       "Homework help and assignment guidance",
       "Exam preparation and study planning",
     ],
@@ -65,16 +65,16 @@ const activeServices = [
   },
   {
     icon: Monitor,
-    title: "Computer & Tech Work",
+    title: "Tech Help for Seniors",
     description:
-      "Tech-savvy student helpers make technology stress-free for seniors and families.",
+      "Smartphones, UPI payments, video calls with family — our patient, tech-savvy students help seniors stay connected and independent in the digital world.",
     subServices: [
-      "Software installation and updates",
-      "Virus removal and security setup",
-      "Phone and tablet troubleshooting",
-      "Data backup and recovery",
-      "Online form filling (government, banking)",
-      "Email and social media setup",
+      "Smartphone and tablet setup and training",
+      "UPI, online banking, and bill payments",
+      "Video calling setup (WhatsApp, Google Meet)",
+      "Online form filling (government, banking, medical)",
+      "Virus removal and phone security",
+      "Email and social media guidance",
     ],
     cta: "/post-work?category=Computer%2FTech+Work",
     ctaLabel: "Book Tech Help",
@@ -88,18 +88,18 @@ const activeServices = [
 const comingSoonServices = [
   {
     icon: Flower2,
-    title: "Yoga Training",
-    description: "Personal yoga sessions at home for seniors and families.",
+    title: "Yoga & Gentle Exercise",
+    description: "Personal yoga and light exercise sessions designed for seniors at home.",
   },
   {
     icon: Sprout,
-    title: "Gardening",
-    description: "Garden maintenance and plant care services.",
+    title: "Gardening Help",
+    description: "Garden upkeep and plant care for seniors who love their green spaces.",
   },
   {
     icon: PawPrint,
     title: "Pet Care",
-    description: "Pet walking, feeding, and basic care services.",
+    description: "Pet walking, feeding, and companionship when seniors need a helping hand.",
   },
 ];
 
@@ -116,10 +116,10 @@ export default function ServicesPage() {
             Verified Student Helpers
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
-            Our Services
+            Elder Care & Home Services
           </h1>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-lg mx-auto">
-            Affordable, reliable home services by Aadhar-verified college students in Pune
+            Compassionate care for your loved ones by Aadhar-verified student caregivers in Pune
           </p>
         </div>
       </section>

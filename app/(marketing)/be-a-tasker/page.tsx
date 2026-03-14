@@ -12,34 +12,34 @@ import {
 import { TaskerRegistrationForm } from "@/components/tasker-registration-form";
 
 export const metadata: Metadata = {
-  title: "Become a Helper",
+  title: "Become an Elder Care Helper",
   description:
-    "Join Work4U as a student helper. Earn while you learn with flexible part-time work opportunities in Pune.",
+    "Join Work4U as a student caregiver. Earn while you learn by providing compassionate elder care and home help in Pune. Flexible hours, fair pay.",
 };
 
 const benefits = [
   {
     icon: Clock,
     title: "Flexible Hours",
-    description: "Work around your class schedule",
+    description: "Fit caregiving around your college schedule",
     color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: IndianRupee,
     title: "Fair Pay",
-    description: "Competitive rates, paid after completion",
+    description: "Earn well — paid promptly after every task",
     color: "bg-emerald-500/10 text-emerald-600",
   },
   {
     icon: TrendingUp,
-    title: "Skill Building",
-    description: "Gain real-world professional experience",
+    title: "Learn Caregiving",
+    description: "Build empathy, patience, and real-world skills",
     color: "bg-violet-500/10 text-violet-600",
   },
   {
     icon: Heart,
-    title: "Community Impact",
-    description: "Make a real difference in people's lives",
+    title: "Change a Life",
+    description: "Bring joy to a senior who needs your company",
     color: "bg-pink-500/10 text-pink-600",
   },
 ];
@@ -47,8 +47,8 @@ const benefits = [
 const steps = [
   { num: "1", text: "Fill the registration form below" },
   { num: "2", text: "Verify your Aadhar & college ID" },
-  { num: "3", text: "Get matched with tasks in your area" },
-  { num: "4", text: "Complete tasks & get paid" },
+  { num: "3", text: "Get matched with families who need care" },
+  { num: "4", text: "Provide care & get paid" },
 ];
 
 export default function BeATaskerPage() {
@@ -65,10 +65,10 @@ export default function BeATaskerPage() {
               For Students
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
-              Earn While You <span className="gradient-text">Learn</span>
+              Earn While You <span className="gradient-text">Care</span>
             </h1>
             <p className="mt-2 text-sm sm:text-base text-muted-foreground">
-              Join 500+ college students earning through flexible, meaningful part-time work in Pune
+              Join 500+ students in Pune who earn by providing compassionate care to senior citizens
             </p>
           </div>
 

@@ -24,21 +24,21 @@ const trustItems = [
   {
     icon: Shield,
     title: "Aadhar Verified",
-    description: "Every helper is identity-verified for your safety",
+    description: "Every caregiver is government ID-verified so your family stays safe",
     stat: "100%",
     statLabel: "Verified",
   },
   {
     icon: Heart,
-    title: "Social Impact",
-    description: "Supporting students through meaningful part-time work",
+    title: "Trained Caregivers",
+    description: "Students trained in elder care — patience, empathy, and respect come first",
     stat: "500+",
-    statLabel: "Students Helped",
+    statLabel: "Families Served",
   },
   {
     icon: IndianRupee,
-    title: "Affordable Pricing",
-    description: "Quality services at student-friendly rates",
+    title: "Affordable Care",
+    description: "Quality elder care that doesn't burden your family's budget",
     stat: "₹99",
     statLabel: "Starting From",
   },
@@ -47,15 +47,15 @@ const trustItems = [
 const services = [
   {
     icon: HeartHandshake,
-    title: "Caretaking for Seniors",
+    title: "Elder Care & Companionship",
     description:
-      "Compassionate care for your loved ones — companionship, daily activities, and peace of mind.",
+      "Your parents deserve warmth, not loneliness. Our trained student caregivers provide daily companionship, meal help, and gentle care so your loved ones feel safe and valued.",
     items: [
-      "Daily companionship",
-      "Meal assistance",
+      "Daily companionship & conversation",
+      "Meal prep & feeding assistance",
       "Medicine reminders",
-      "Light housekeeping",
-      "Mobility support",
+      "Mobility & walking support",
+      "Doctor visit accompaniment",
     ],
     color: "from-emerald-500/10 to-teal-500/10",
     iconBg: "bg-emerald-500/10",
@@ -65,13 +65,13 @@ const services = [
     icon: BookOpen,
     title: "Home Tutoring",
     description:
-      "Personalized tutoring at your home. Helping children build a strong academic foundation.",
+      "College students who make learning personal. One-on-one tutoring at your doorstep for children of all ages.",
     items: [
-      "Math tutoring",
-      "Science tutoring",
-      "Language tutoring",
-      "Homework help",
+      "Math & Science",
+      "English & Languages",
+      "Homework guidance",
       "Exam preparation",
+      "Skill-based learning",
     ],
     color: "from-blue-500/10 to-indigo-500/10",
     iconBg: "bg-blue-500/10",
@@ -79,15 +79,15 @@ const services = [
   },
   {
     icon: Monitor,
-    title: "Computer & Tech Work",
+    title: "Tech Help for Seniors",
     description:
-      "Technology made simple. Our tech-savvy students handle all your digital needs.",
+      "Smartphones, UPI, video calls — our tech-savvy students patiently teach and troubleshoot so elders stay connected with family.",
     items: [
-      "Software installation",
-      "Phone/tablet setup",
-      "Virus removal",
-      "Data backup",
+      "Phone & tablet setup",
+      "UPI & online banking help",
+      "Video calling setup",
       "Online form filling",
+      "Virus removal & security",
     ],
     color: "from-violet-500/10 to-purple-500/10",
     iconBg: "bg-violet-500/10",
@@ -98,23 +98,23 @@ const services = [
 const steps = [
   {
     icon: ClipboardList,
-    title: "Post Your Work",
+    title: "Tell Us What You Need",
     description:
-      "Tell us what you need — your area, timing, and budget",
+      "Share what care or help your family needs — area, timing, and budget",
     num: "01",
   },
   {
     icon: Search,
-    title: "We Match You",
+    title: "We Match a Caregiver",
     description:
-      "Verified student helpers in your area are instantly notified",
+      "A verified, trained student caregiver in your area is assigned within hours",
     num: "02",
   },
   {
     icon: CheckCircle,
-    title: "Get It Done",
+    title: "Care Begins",
     description:
-      "Your helper arrives and completes the work. Pay only after satisfaction",
+      "Your caregiver arrives and your family gets the help they deserve. Pay after satisfaction",
     num: "03",
   },
 ];
@@ -136,15 +136,15 @@ export default function Home() {
               <div className="space-y-5 md:space-y-6 max-w-xl">
              
                 <h1 className="text-3xl leading-[1.15] font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
-                  Your Work,
+                  Trusted Care for
                   <br />
-                  Our <span className="gradient-text">Help</span>
+                  Your <span className="gradient-text">Loved Ones</span>
                 </h1>
 
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Work4U provides <strong className="text-foreground">Aadhar-verified student helpers</strong> for
-                  Pune residents who need assistance with daily work at home.
-                  Taking our services means you&apos;re helping a student earn while they learn.
+                  Work4U connects Pune families with <strong className="text-foreground">Aadhar-verified student caregivers</strong> who
+                  provide compassionate elder care, daily companionship, and home assistance.
+                  Every booking supports a student&apos;s education.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -181,7 +181,7 @@ export default function Home() {
                         <Star key={i} className="h-3 w-3 fill-current" />
                       ))}
                     </div>
-                    <p className="text-xs text-muted-foreground">Trusted by <strong className="text-foreground">500+</strong> families</p>
+                    <p className="text-xs text-muted-foreground">Trusted by <strong className="text-foreground">500+</strong> Pune families</p>
                   </div>
                 </div>
               </div>
@@ -196,15 +196,15 @@ export default function Home() {
                         <HeartHandshake className="h-12 w-12 text-secondary" strokeWidth={1.5} />
                       </div>
                       <h3 className="text-lg font-bold text-foreground text-center">
-                        Connecting Hearts
+                        Care That Feels Like Family
                       </h3>
                       <p className="text-sm text-muted-foreground text-center mt-1.5 max-w-[240px]">
-                        Students helping seniors, families helping dreams
+                        Trained student caregivers your parents will love
                       </p>
                       <div className="grid grid-cols-3 gap-3 mt-6 w-full">
                         {[
-                          { n: "500+", l: "Helpers" },
-                          { n: "1000+", l: "Tasks" },
+                          { n: "500+", l: "Caregivers" },
+                          { n: "1000+", l: "Families" },
                           { n: "11", l: "Areas" },
                         ].map((s) => (
                           <div key={s.l} className="text-center">
@@ -230,7 +230,7 @@ export default function Home() {
                   {/* Floating badge top right */}
                   <div className="absolute -top-3 -right-4 glass rounded-2xl px-3.5 py-2 shadow-lg border border-white/40 flex items-center gap-2">
                     <Users className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">500+ Students</span>
+                    <span className="text-sm font-semibold text-foreground">500+ Caregivers</span>
                   </div>
                 </div>
               </div>
@@ -267,10 +267,10 @@ export default function Home() {
             <div className="text-center mb-8 md:mb-10 fade-up">
               <span className="section-badge mb-3">Our Services</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                What We Offer
+                Care & Help Your Family Deserves
               </h2>
               <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
-                From elder care to tech support, our student helpers are trained and ready
+                Elder care is our heart. We also help with tutoring and tech — all by trained, verified students.
               </p>
             </div>
 
@@ -385,10 +385,10 @@ export default function Home() {
             <div className="text-center mb-8 md:mb-10 fade-up">
               <span className="section-badge mb-3">Testimonials</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                What Our Users Say
+                Families Trust Us
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Real stories from real people
+                Hear from families who found the right care for their loved ones
               </p>
             </div>
             <div className="fade-up">
@@ -409,7 +409,7 @@ export default function Home() {
               Ready to Get Started?
             </h2>
             <p className="mt-3 text-sm sm:text-base text-white/80 max-w-xl mx-auto">
-              Whether you need help at home or want to earn as a student helper — we&apos;ve got you covered
+              Whether your parents need a caring companion or you&apos;re a student who wants to make a difference — we&apos;re here
             </p>
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center gap-3">
               <Button

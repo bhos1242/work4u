@@ -38,7 +38,7 @@ export function Footer() {
       <div className="bg-primary">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm font-medium text-primary-foreground text-center sm:text-left">
-            Need help at home? Get matched with a verified student helper today.
+            Need care for your loved ones? Get matched with a verified caregiver today.
           </p>
           <Link
             href="/post-work"
@@ -61,12 +61,12 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-gray-400 leading-relaxed max-w-[240px]">
-              Your Work, Our Help. Connecting Pune residents with
-              Aadhar-verified student helpers for affordable, reliable home
-              services.
+              Trusted elder care in Pune. Aadhar-verified student caregivers
+              who bring companionship, daily help, and peace of mind to your
+              loved ones.
             </p>
             <p className="text-[10px] text-gray-500 italic uppercase tracking-wider">
-              By Students, For Students, To The Society
+              Care That Feels Like Family
             </p>
             {/* Social */}
             <div className="flex items-center gap-2 pt-1">

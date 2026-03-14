@@ -9,41 +9,40 @@ import {
   IndianRupee,
   Linkedin,
   HeartHandshake,
-  Eye,
   Sparkles,
   Target,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us - Our Mission for Elder Care",
   description:
-    "Learn about Work4U's mission to connect Pune residents with Aadhar-verified student helpers. By students, for students, to the society.",
+    "Work4U bridges generations — connecting caring college students with senior citizens who need daily help and companionship in Pune. Learn our story.",
 };
 
 const studentModelCards = [
   {
     icon: GraduationCap,
     title: "Earn While You Learn",
-    description: "Students earn income to fund their education without disrupting their studies",
+    description: "Students fund their education through meaningful caregiving work",
     color: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: Shield,
-    title: "Verified & Trained",
-    description: "Every helper submits Aadhar card and college ID for verification",
+    title: "Aadhar Verified",
+    description: "Every caregiver submits Aadhar card and college ID — your family's safety comes first",
     color: "bg-emerald-500/10 text-emerald-600",
   },
   {
     icon: Users,
-    title: "Community Bond",
-    description: "Intergenerational connections between students and seniors create lasting relationships",
+    title: "Generational Bond",
+    description: "Young caregivers and seniors build real, lasting relationships based on respect",
     color: "bg-violet-500/10 text-violet-600",
   },
   {
     icon: TrendingUp,
-    title: "Skill Development",
-    description: "Helpers gain real-world professional skills and work experience",
+    title: "Trained in Elder Care",
+    description: "Students learn patience, empathy, and professional caregiving skills",
     color: "bg-amber-500/10 text-amber-600",
   },
 ];
@@ -51,23 +50,23 @@ const studentModelCards = [
 const whyChooseUs = [
   {
     icon: Shield,
-    title: "High Security",
-    description: "Thorough background checks and verification for every helper",
+    title: "Background Checked",
+    description: "Thorough identity verification and background checks for every caregiver",
   },
   {
     icon: BadgeCheck,
-    title: "Aadhar Verified",
-    description: "Government ID verified for your complete peace of mind",
+    title: "100% Aadhar Verified",
+    description: "Government ID-verified caregivers for your family's complete peace of mind",
   },
   {
     icon: Heart,
-    title: "Social Impact",
-    description: "Every service booking directly supports a student's education",
+    title: "Care with Purpose",
+    description: "Every booking gives a senior companionship and helps a student fund their education",
   },
   {
     icon: IndianRupee,
-    title: "Affordable Rates",
-    description: "Student helpers offer quality service at budget-friendly prices",
+    title: "Affordable for Families",
+    description: "Quality elder care starting at ₹99 — because good care shouldn't be a luxury",
   },
 ];
 
@@ -77,9 +76,7 @@ const team = [
   { name: "Vishnu Palaskar", title: "Co-Founder & COO", color: "bg-emerald-600" },
   { name: "Rahul Mane", title: "Co-Founder & CFO", color: "bg-violet-600" },
   { name: "Sudarshan Pathade", title: "Co-Founder & SMM", color: "bg-amber-600" },
-  { name: "Shreya Sathe", title: "Co-Founder & CMO", color: "bg-pink-600" },
-  { name: "Prerana Shevale", title: "Co-Founder & SMM", color: "bg-teal-600" },
-  { name: "Vaishnavi Badhe", title: "Co-Founder & SMM", color: "bg-indigo-600" },
+
 ];
 
 export default function AboutPage() {
@@ -98,7 +95,7 @@ export default function AboutPage() {
             About <span className="text-primary">Work4U</span>
           </h1>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-lg mx-auto">
-            Bridging communities through service and opportunity
+            Bridging generations through compassionate elder care
           </p>
         </div>
       </section>
@@ -116,12 +113,11 @@ export default function AboutPage() {
                 <h2 className="text-lg font-bold text-foreground">Who We Are</h2>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Work4u is not just a platform — we are your helping hand,
-                connecting hearts through transformative services. Our
-                compassionate team ensures that your everyday tasks are handled
-                with care, offering affordable and reliable solutions. We believe
-                in creating meaningful connections and making a positive impact
-                on both students and communities.
+                Work4U was born from a simple observation — too many senior citizens
+                in Pune live alone while their children work in other cities. We connect
+                these elders with caring, Aadhar-verified college students who provide
+                daily companionship, help with meals and medicines, and bring warmth
+                to their everyday lives. Every service also supports a student&apos;s education.
               </p>
             </div>
 
@@ -134,10 +130,10 @@ export default function AboutPage() {
                 <h2 className="text-lg font-bold text-foreground">Our Vision</h2>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                At Work4u, we envision a world where every task becomes an
-                opportunity for growth and connection. By empowering students and
-                fostering collaboration, we strive to make home services
-                accessible to all, creating a ripple effect of positivity.
+                We envision a Pune where no senior citizen feels lonely or helpless at home.
+                By building a trusted network of young, trained caregivers, we aim to make
+                compassionate elder care accessible and affordable for every family —
+                while giving students the dignity of earning through meaningful work.
               </p>
             </div>
           </div>

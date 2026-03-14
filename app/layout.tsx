@@ -17,24 +17,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Work4U Services - Your Work, Our Help | Home Services in Pune",
+    default: "Work4U Services - Trusted Elder Care & Home Help in Pune",
     template: "%s | Work4U Services",
   },
   description:
-    "Connect with verified student helpers in Pune for elder care, tutoring, and tech support. Affordable, reliable, and socially impactful home services.",
+    "Pune's trusted elder care service. Aadhar-verified student caregivers provide compassionate companionship, daily assistance, and peace of mind for your loved ones. Starting at ₹99.",
   keywords: [
-    "home services Pune",
-    "student helpers",
     "elder care Pune",
-    "home tutoring",
-    "tech support Pune",
-    "Aadhar verified helpers",
+    "senior citizen care Pune",
+    "old age care at home Pune",
+    "caretaker for elderly Pune",
+    "home care services Pune",
+    "senior companionship Pune",
+    "Aadhar verified caregiver",
+    "student helpers Pune",
     "Work4U Services",
+    "home tutoring Pune",
+    "affordable elder care",
   ],
   openGraph: {
-    title: "Work4U Services - Your Work, Our Help",
+    title: "Work4U Services - Trusted Elder Care & Home Help in Pune",
     description:
-      "Connect with verified student helpers in Pune for elder care, tutoring, and tech support.",
+      "Compassionate, Aadhar-verified student caregivers for your elderly loved ones in Pune. Daily companionship, meal help, medicine reminders & more.",
     url: "https://www.work4uservices.in",
     siteName: "Work4U Services",
     locale: "en_IN",
@@ -58,7 +62,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: "Work4U Services",
               description:
-                "Social impact platform connecting Pune residents with verified student helpers for home services",
+                "Pune's trusted elder care and home services platform. Aadhar-verified student caregivers for senior citizens.",
               url: "https://www.work4uservices.in",
               telephone: "+918421502803",
               email: "info@work4u.com",
