@@ -61,7 +61,7 @@ export function BottomNav() {
 
       {/* Bottom Navigation */}
       <nav
-        className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80"
+        className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-border bg-white"
         aria-label="Bottom navigation"
       >
         <div className="flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] h-16">

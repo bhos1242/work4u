@@ -51,8 +51,8 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="max-w-6xl mx-auto flex h-14 md:h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-white">
+      <div className="max-w-6xl mx-auto flex h-14 md:h-16 items-center justify-between px-4 ">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1.5">
           <span className="text-xl font-extrabold tracking-tight">
