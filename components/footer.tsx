@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 const quickLinks = [
@@ -13,6 +13,7 @@ const quickLinks = [
 const legalLinks = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
+  { href: "/be-a-tasker", label: "Become a Helper" },
 ];
 
 const socialLinks = [
@@ -32,31 +33,64 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#1A202C] text-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-[#111827] text-white pb-20 md:pb-0">
+      {/* Top CTA strip */}
+      <div className="bg-primary">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-sm font-medium text-primary-foreground text-center sm:text-left">
+            Need help at home? Get matched with a verified student helper today.
+          </p>
+          <Link
+            href="/post-work"
+            className="inline-flex items-center gap-1.5 bg-white text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors shrink-0"
+          >
+            Post a Work
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 py-8 md:py-10">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="col-span-2 md:col-span-1 space-y-3">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-extrabold">
-                <span className="text-[#7DB48E]">Work</span>
+              <span className="text-xl font-extrabold">
+                <span className="text-[#5E9A6F]">Work</span>
                 <span className="text-white">4u</span>
               </span>
             </Link>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs text-gray-400 leading-relaxed max-w-[240px]">
               Your Work, Our Help. Connecting Pune residents with
               Aadhar-verified student helpers for affordable, reliable home
               services.
             </p>
-            <p className="text-xs text-gray-400 italic">
+            <p className="text-[10px] text-gray-500 italic uppercase tracking-wider">
               By Students, For Students, To The Society
             </p>
+            {/* Social */}
+            <div className="flex items-center gap-2 pt-1">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="h-8 w-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-primary hover:text-white transition-all text-gray-400 hover:scale-105"
+                >
+                  <social.icon className="h-3.5 w-3.5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+              Quick Links
+            </h3>
+            <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -70,10 +104,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & More */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+              Legal
+            </h3>
+            <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -89,36 +125,38 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+              Contact
+            </h3>
+            <ul className="space-y-2.5 text-sm text-gray-300">
               <li className="flex items-start gap-2">
-                <MapPin className="h-5 w-5 shrink-0 mt-0.5" strokeWidth={2} />
-                <span>
-                  Shrivardhan, Ganesh Nagar, Galli number 2, New Sanghavi,
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-gray-500" strokeWidth={2} />
+                <span className="text-xs leading-relaxed">
+                  Ganesh Nagar, New Sanghavi,
                   Pimpri-Chinchwad, Maharashtra 411027
                 </span>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-5 w-5 shrink-0" strokeWidth={2} />
+                <Mail className="h-4 w-4 shrink-0 text-gray-500" strokeWidth={2} />
                 <a
                   href="mailto:info@work4u.com"
-                  className="hover:text-white transition-colors"
+                  className="text-xs hover:text-white transition-colors"
                 >
                   info@work4u.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-5 w-5 shrink-0" strokeWidth={2} />
+                <Phone className="h-4 w-4 shrink-0 text-gray-500" strokeWidth={2} />
                 <div className="flex flex-col">
                   <a
                     href="tel:+918421502803"
-                    className="hover:text-white transition-colors"
+                    className="text-xs hover:text-white transition-colors"
                   >
                     +91 84215 02803
                   </a>
                   <a
                     href="tel:+917219154615"
-                    className="hover:text-white transition-colors"
+                    className="text-xs hover:text-white transition-colors"
                   >
                     +91 72191 54615
                   </a>
@@ -129,24 +167,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-600 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="h-10 w-10 flex items-center justify-center rounded-full bg-gray-700 hover:bg-primary transition-colors"
-              >
-                <social.icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Work4U Services. All rights
-            reserved.
+        <div className="mt-8 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-[11px] text-gray-500">
+            &copy; {new Date().getFullYear()} Work4U Services. All rights reserved.
+          </p>
+          <p className="text-[11px] text-gray-500">
+            Made with care in Pune, India
           </p>
         </div>
       </div>

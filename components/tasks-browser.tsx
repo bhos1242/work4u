@@ -3,23 +3,25 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from "@/components/ui/sheet";
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerClose,
+} from "@/components/ui/drawer";
 import {
   MapPin,
   IndianRupee,
   Calendar,
   Filter,
-  Loader2,
+  ArrowRight,
+  Search,
+  X,
 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -80,10 +82,10 @@ function FilterSidebar({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <div>
-        <h3 className="font-semibold text-foreground mb-3">Area</h3>
-        <div className="space-y-2 max-h-60 overflow-y-auto">
+        <h3 className="text-sm font-semibold text-foreground mb-2">Area</h3>
+        <div className="space-y-1.5 max-h-48 overflow-y-auto">
           {SERVICE_AREAS.map((area) => (
             <div key={area} className="flex items-center gap-2">
               <Checkbox
@@ -91,7 +93,7 @@ function FilterSidebar({
                 checked={areas.includes(area)}
                 onCheckedChange={() => toggleArea(area)}
               />
-              <Label htmlFor={`area-${area}`} className="text-sm cursor-pointer">
+              <Label htmlFor={`area-${area}`} className="text-xs cursor-pointer">
                 {area}
               </Label>
             </div>
@@ -100,8 +102,8 @@ function FilterSidebar({
       </div>
 
       <div>
-        <h3 className="font-semibold text-foreground mb-3">Category</h3>
-        <div className="space-y-2">
+        <h3 className="text-sm font-semibold text-foreground mb-2">Category</h3>
+        <div className="space-y-1.5">
           {CATEGORIES.map((cat) => (
             <div key={cat} className="flex items-center gap-2">
               <Checkbox
@@ -109,7 +111,7 @@ function FilterSidebar({
                 checked={categories.includes(cat)}
                 onCheckedChange={() => toggleCategory(cat)}
               />
-              <Label htmlFor={`cat-${cat}`} className="text-sm cursor-pointer">
+              <Label htmlFor={`cat-${cat}`} className="text-xs cursor-pointer">
                 {cat}
               </Label>
             </div>
@@ -119,7 +121,7 @@ function FilterSidebar({
 
       <button
         onClick={onClear}
-        className="text-sm text-primary hover:underline"
+        className="text-xs text-primary hover:underline"
       >
         Clear All
       </button>
@@ -167,11 +169,11 @@ export function TasksBrowser() {
   }, [page, areas, categories]);
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-6">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-[280px] shrink-0">
-        <div className="sticky top-24 p-4 bg-surface rounded-xl border border-border">
-          <h2 className="font-semibold text-foreground mb-4">Filters</h2>
+      <aside className="hidden lg:block w-[240px] shrink-0">
+        <div className="sticky top-20 p-4 bg-card rounded-xl border border-border">
+          <h2 className="text-sm font-bold text-foreground mb-3">Filters</h2>
           <FilterSidebar
             areas={areas}
             setAreas={setAreas}
@@ -182,24 +184,31 @@ export function TasksBrowser() {
         </div>
       </aside>
 
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         {/* Mobile Filter */}
         <div className="lg:hidden mb-4">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" className="min-h-11">
-                <Filter className="mr-2 h-4 w-4" />
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button variant="outline" size="sm" className="h-9 text-xs">
+                <Filter className="mr-1.5 h-3.5 w-3.5" />
                 Filters
                 {(areas.length > 0 || categories.length > 0) && (
-                  <Badge className="ml-2 bg-primary text-primary-foreground">
+                  <Badge className="ml-1.5 bg-primary text-primary-foreground h-5 min-w-5 text-[10px]">
                     {areas.length + categories.length}
                   </Badge>
                 )}
               </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px]">
-              <SheetTitle>Filters</SheetTitle>
-              <div className="mt-6">
+            </DrawerTrigger>
+            <DrawerContent className="max-h-[80vh]">
+              <div className="flex items-center justify-between px-4 pt-1">
+                <DrawerHeader className="p-0">
+                  <DrawerTitle className="text-base font-bold">Filters</DrawerTitle>
+                </DrawerHeader>
+                <DrawerClose className="p-1.5 -mr-1 rounded-full hover:bg-muted transition-colors">
+                  <X className="h-4 w-4 text-muted-foreground" />
+                </DrawerClose>
+              </div>
+              <div className="overflow-y-auto px-4 pb-4 pt-3">
                 <FilterSidebar
                   areas={areas}
                   setAreas={setAreas}
@@ -208,103 +217,98 @@ export function TasksBrowser() {
                   onClear={clearFilters}
                 />
               </div>
-            </SheetContent>
-          </Sheet>
+            </DrawerContent>
+          </Drawer>
         </div>
 
         {/* Task Grid */}
         {loading ? (
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Card key={i} className="border border-border">
-                <CardContent className="pt-6 space-y-3">
-                  <Skeleton className="h-5 w-24" />
-                  <Skeleton className="h-6 w-3/4" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-2/3" />
-                  <Skeleton className="h-10 w-28 mt-4" />
-                </CardContent>
-              </Card>
+              <div key={i} className="rounded-xl border border-border p-4 space-y-2.5">
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-5 w-3/4" />
+                <Skeleton className="h-3 w-full" />
+                <Skeleton className="h-3 w-2/3" />
+                <Skeleton className="h-8 w-24 mt-2" />
+              </div>
             ))}
           </div>
         ) : tasks.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-muted-foreground text-lg">
+          <div className="text-center py-12">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+              <Search className="h-5 w-5 text-muted-foreground" />
+            </div>
+            <p className="text-sm text-muted-foreground">
               No tasks found. Try adjusting your filters.
             </p>
           </div>
         ) : (
           <>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
               {tasks.map((task) => (
-                <Card
+                <Link
                   key={task.id}
-                  className="group hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 border border-border"
+                  href={`/tasks/${task.id}`}
+                  className="group rounded-xl border border-border bg-card p-4 hover:shadow-lg hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center justify-between">
-                      <Badge variant="secondary" className="text-xs">
-                        {task.category}
-                      </Badge>
-                      <Badge
-                        className={`text-xs ${STATUS_COLORS[task.status] || ""}`}
-                      >
-                        {task.status}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <h3 className="font-semibold text-foreground">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="secondary" className="text-[10px] font-medium">
                       {task.category}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {task.description}
-                    </p>
-                    <div className="space-y-1.5 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="h-4 w-4 shrink-0" />
-                        {task.location}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <IndianRupee className="h-4 w-4 shrink-0" />
-                        ₹{task.budget} {task.budgetType}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="h-4 w-4 shrink-0" />
-                        {new Date(task.startDate).toLocaleDateString("en-IN")}
-                      </div>
-                    </div>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full mt-2 min-h-11 font-semibold border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-lg"
-                    >
-                      <Link href={`/tasks/${task.id}`}>View Details</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                    </Badge>
+                    <Badge className={`text-[10px] ${STATUS_COLORS[task.status] || ""}`}>
+                      {task.status}
+                    </Badge>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3 leading-snug">
+                    {task.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {task.location}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <IndianRupee className="h-3 w-3 shrink-0" />
+                      ₹{task.budget} {task.budgetType}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar className="h-3 w-3 shrink-0" />
+                      {new Date(task.startDate).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+                    </span>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
+                    View Details
+                    <ArrowRight className="h-3 w-3" />
+                  </span>
+                </Link>
               ))}
             </div>
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="flex justify-center gap-2 mt-10">
+              <div className="flex justify-center items-center gap-2 mt-6">
                 <Button
                   variant="outline"
+                  size="sm"
                   disabled={page === 1}
                   onClick={() => setPage((p) => p - 1)}
-                  className="min-h-11"
+                  className="h-8 text-xs"
                 >
                   Previous
                 </Button>
-                <span className="flex items-center px-4 text-sm text-muted-foreground">
-                  Page {page} of {totalPages}
+                <span className="text-xs text-muted-foreground px-2">
+                  {page} / {totalPages}
                 </span>
                 <Button
                   variant="outline"
+                  size="sm"
                   disabled={page === totalPages}
                   onClick={() => setPage((p) => p + 1)}
-                  className="min-h-11"
+                  className="h-8 text-xs"
                 >
                   Next
                 </Button>
