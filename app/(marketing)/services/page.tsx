@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
 const activeServices = [
   {
     icon: HeartHandshake,
+    image: "/images/elder-companion.png",
     title: "Elder Care & Companionship",
     description:
       "Your parents deserve more than just physical help — they need someone who listens, cares, and shows up every day. Our Aadhar-verified student caregivers are trained in patience, empathy, and elder-friendly communication. Whether it's sharing chai and conversation or helping with daily routines, we bring warmth to your loved one's day.",
@@ -46,6 +48,7 @@ const activeServices = [
   },
   {
     icon: BookOpen,
+    image: "/images/tutoring.png",
     title: "Home Tutoring",
     description:
       "College students who bring fresh energy to learning. One-on-one tutoring at your doorstep, tailored to your child's pace and school curriculum.",
@@ -65,6 +68,7 @@ const activeServices = [
   },
   {
     icon: Monitor,
+    image: "/images/student-caregiver.png",
     title: "Tech Help for Seniors",
     description:
       "Smartphones, UPI payments, video calls with family — our patient, tech-savvy students help seniors stay connected and independent in the digital world.",
@@ -139,21 +143,31 @@ export default function ServicesPage() {
               {/* Gradient accent bar */}
               <div className={`h-1 bg-linear-to-r ${service.gradient}`} />
 
-              <div className="grid md:grid-cols-[280px_1fr] gap-0">
+              <div className="grid md:grid-cols-[280px_1fr] md:min-h-[300px] gap-0">
                 {/* Left panel */}
-                <div className="flex flex-col items-center justify-center p-6 md:p-8 bg-linear-to-b from-surface to-card md:border-r border-border">
-                  {service.featured && (
-                    <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-semibold">
-                      <Star className="h-3 w-3 mr-1 fill-primary" />
-                      Most Popular
-                    </Badge>
-                  )}
-                  <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.iconBg} group-hover:scale-105 transition-transform`}>
-                    <service.icon className={`h-8 w-8 ${service.iconColor}`} strokeWidth={1.8} />
+                <div className="relative flex flex-col items-center justify-center p-6 md:p-8 md:border-r border-border overflow-hidden min-h-[220px]">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />
+                  
+                  <div className="relative z-10 flex flex-col items-center justify-center h-full text-center mt-2">
+                    {service.featured && (
+                      <Badge className="mb-3 bg-primary text-primary-foreground border-0 text-xs font-semibold shadow-md">
+                        <Star className="h-3 w-3 mr-1 fill-current" />
+                        Most Popular
+                      </Badge>
+                    )}
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-white/95 backdrop-blur-sm shadow-lg mb-3`}>
+                      <service.icon className={`h-7 w-7 ${service.iconColor}`} strokeWidth={2} />
+                    </div>
+                    <h2 className="text-xl font-bold text-white drop-shadow-md">
+                      {service.title}
+                    </h2>
                   </div>
-                  <h2 className="mt-3 text-lg font-bold text-foreground text-center">
-                    {service.title}
-                  </h2>
                 </div>
 
                 {/* Right content */}

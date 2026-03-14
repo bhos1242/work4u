@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Shield,
@@ -47,6 +48,7 @@ const trustItems = [
 const services = [
   {
     icon: HeartHandshake,
+    image: "/images/elder-companion.png",
     title: "Elder Care & Companionship",
     description:
       "Your parents deserve warmth, not loneliness. Our trained student caregivers provide daily companionship, meal help, and gentle care so your loved ones feel safe and valued.",
@@ -63,6 +65,7 @@ const services = [
   },
   {
     icon: BookOpen,
+    image: "/images/tutoring.png",
     title: "Home Tutoring",
     description:
       "College students who make learning personal. One-on-one tutoring at your doorstep for children of all ages.",
@@ -79,6 +82,7 @@ const services = [
   },
   {
     icon: Monitor,
+    image: "/images/student-caregiver.png",
     title: "Tech Help for Seniors",
     description:
       "Smartphones, UPI, video calls — our tech-savvy students patiently teach and troubleshoot so elders stay connected with family.",
@@ -187,50 +191,33 @@ export default function Home() {
               </div>
 
               {/* Right - visual card */}
-              <div className="hidden lg:flex justify-center">
-                <div className="relative">
-                  {/* Main card */}
-                  <div className="w-[360px] h-[400px] rounded-3xl bg-linear-to-br from-secondary/10 via-surface to-accent/20 overflow-hidden border border-border shadow-2xl shadow-primary/10">
-                    <div className="h-full flex flex-col items-center justify-center p-6">
-                      <div className="w-24 h-24 rounded-full bg-secondary/10 flex items-center justify-center mb-5 animate-float">
-                        <HeartHandshake className="h-12 w-12 text-secondary" strokeWidth={1.5} />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground text-center">
-                        Care That Feels Like Family
-                      </h3>
-                      <p className="text-sm text-muted-foreground text-center mt-1.5 max-w-[240px]">
-                        Trained student caregivers your parents will love
-                      </p>
-                      <div className="grid grid-cols-3 gap-3 mt-6 w-full">
-                        {[
-                          { n: "500+", l: "Caregivers" },
-                          { n: "1000+", l: "Families" },
-                          { n: "11", l: "Areas" },
-                        ].map((s) => (
-                          <div key={s.l} className="text-center">
-                            <p className="text-base font-bold text-secondary">{s.n}</p>
-                            <p className="text-xs text-muted-foreground">{s.l}</p>
-                          </div>
-                        ))}
-                      </div>
+              <div className="hidden lg:flex justify-center w-full">
+                <div className="relative w-full max-w-[500px] aspect-[6/5] rounded-3xl overflow-hidden border border-border shadow-2xl shadow-primary/10">
+                  <Image
+                    src="/images/services-hero.png"
+                    alt="Trusted Care Services"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3">
+                      <HeartHandshake className="h-7 w-7 text-white" strokeWidth={1.5} />
                     </div>
-                  </div>
-
-                  {/* Floating badge */}
-                  <div className="absolute -bottom-3 -left-5 glass rounded-2xl px-4 py-2.5 shadow-lg border border-white/40 flex items-center gap-2.5">
-                    <div className="h-9 w-9 rounded-full bg-success/10 flex items-center justify-center">
-                      <Shield className="h-4 w-4 text-success" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">Aadhar Verified</p>
-                      <p className="text-xs text-muted-foreground">100% Safe & Secure</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-white mb-1.5 shadow-sm">
+                      Care That Feels Like Family
+                    </h3>
+                    <p className="text-sm text-white/90">
+                      Trained student caregivers your parents will love
+                    </p>
                   </div>
 
                   {/* Floating badge top right */}
-                  <div className="absolute -top-3 -right-4 glass rounded-2xl px-3.5 py-2 shadow-lg border border-white/40 flex items-center gap-2">
+                  <div className="absolute top-6 right-6 glass rounded-2xl px-3.5 py-2 shadow-lg border border-white/40 flex items-center gap-2 bg-white/80 backdrop-blur-md">
                     <Users className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">500+ Caregivers</span>
+                    <span className="text-sm font-bold text-slate-900">500+ Caregivers</span>
                   </div>
                 </div>
               </div>
@@ -278,24 +265,33 @@ export default function Home() {
               {services.map((service) => (
                 <div
                   key={service.title}
-                  className="group relative bg-card rounded-xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
+                  className="group relative bg-card rounded-xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 flex flex-col"
                 >
                   {/* Gradient top strip */}
-                  <div className={`h-1 bg-linear-to-r ${service.color}`} />
+                  <div className={`h-1 bg-linear-to-r ${service.color} relative z-20`} />
 
-                  <div className="p-5 sm:p-6">
-                    <div className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl ${service.iconBg}`}>
+                  <div className="relative w-full h-48 overflow-hidden bg-muted">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className={`absolute bottom-4 left-5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${service.iconBg} bg-background/95 backdrop-blur-sm shadow-md`}>
                       <service.icon className={`h-5 w-5 ${service.iconColor}`} strokeWidth={2} />
                     </div>
+                  </div>
 
-                    <h3 className="text-base font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors">
+                  <div className="p-5 sm:p-6 flex-1 flex flex-col">
+                    <h3 className="text-base font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors mt-2">
                       {service.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                       {service.description}
                     </p>
 
-                    <ul className="space-y-2 mb-4">
+                    <ul className="space-y-2 mb-4 flex-1">
                       {service.items.map((item) => (
                         <li key={item} className="flex items-center gap-2 text-sm text-foreground">
                           <CheckCircle className="h-3.5 w-3.5 text-primary shrink-0" strokeWidth={2.5} />
@@ -306,7 +302,7 @@ export default function Home() {
 
                     <Link
                       href="/services"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all mt-auto"
                     >
                       Learn More
                       <ArrowRight className="h-4 w-4" />
