@@ -125,9 +125,9 @@ export default function Home() {
         {/* ─── HERO ─── */}
         <section className="relative min-h-[85vh] flex items-center overflow-hidden">
           {/* Background decorations */}
-          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-accent-light" />
-          <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/40 blur-3xl" />
+          <div className="absolute inset-0 bg-linear-to-br from-secondary/5 via-background to-accent/10" />
+          <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/20 blur-3xl" />
 
           <div className="container mx-auto px-4 py-16 md:py-0 relative z-10">
             <div className="grid gap-10 lg:grid-cols-2 items-center">
@@ -198,10 +198,10 @@ export default function Home() {
               <div className="hidden lg:flex justify-center">
                 <div className="relative">
                   {/* Main card */}
-                  <div className="w-[400px] h-[460px] rounded-3xl bg-linear-to-br from-primary/10 via-surface to-accent overflow-hidden border border-border shadow-2xl shadow-primary/10">
+                  <div className="w-[400px] h-[460px] rounded-3xl bg-linear-to-br from-secondary/10 via-surface to-accent/20 overflow-hidden border border-border shadow-2xl shadow-primary/10">
                     <div className="h-full flex flex-col items-center justify-center p-8">
-                      <div className="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mb-6 animate-float">
-                        <HeartHandshake className="h-14 w-14 text-primary" strokeWidth={1.5} />
+                      <div className="w-28 h-28 rounded-full bg-secondary/10 flex items-center justify-center mb-6 animate-float">
+                        <HeartHandshake className="h-14 w-14 text-secondary" strokeWidth={1.5} />
                       </div>
                       <h3 className="text-xl font-bold text-foreground text-center">
                         Connecting Hearts
@@ -216,7 +216,7 @@ export default function Home() {
                           { n: "11", l: "Areas" },
                         ].map((s) => (
                           <div key={s.l} className="text-center">
-                            <p className="text-lg font-bold text-primary">{s.n}</p>
+                            <p className="text-lg font-bold text-secondary">{s.n}</p>
                             <p className="text-xs text-muted-foreground">{s.l}</p>
                           </div>
                         ))}

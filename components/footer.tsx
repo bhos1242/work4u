@@ -32,14 +32,14 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-secondary text-white">
+    <footer className="bg-[#1A202C] text-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-extrabold">
-                <span className="text-primary-light">Work</span>
+                <span className="text-[#7DB48E]">Work</span>
                 <span className="text-white">4u</span>
               </span>
             </Link>
