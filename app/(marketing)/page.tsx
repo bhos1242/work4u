@@ -18,6 +18,7 @@ import {
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { ServiceAreaSearch } from "@/components/service-area-search";
 import { ScrollRevealProvider } from "@/components/scroll-reveal-provider";
+import { ApplyWorkButton } from "@/components/apply-work-button";
 
 const trustItems = [
   {
@@ -157,14 +158,9 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                     </Link>
                   </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white h-12 md:h-14 px-6 md:px-8 font-semibold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5"
-                  >
-                    <Link href="/be-a-tasker">Apply For Work</Link>
-                  </Button>
+                  <ApplyWorkButton className="border-2 border-primary text-primary hover:bg-primary hover:text-white h-12 md:h-14 px-6 md:px-8 font-semibold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
+                    Apply For Work
+                  </ApplyWorkButton>
                 </div>
 
                 {/* Mini social proof */}
@@ -426,14 +422,9 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-2 border-white/30 text-white hover:bg-white/10 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5"
-              >
-                <Link href="/be-a-tasker">Become a Helper</Link>
-              </Button>
+              <ApplyWorkButton className="border-2 border-white/30 text-white hover:bg-white/10 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
+                Become a Helper
+              </ApplyWorkButton>
             </div>
           </div>
         </section>

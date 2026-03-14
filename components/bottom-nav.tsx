@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -10,17 +9,8 @@ import {
   PlusCircle,
   Briefcase,
   User,
-  X,
 } from "lucide-react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerClose,
-} from "@/components/ui/drawer";
-import { PostWorkForm } from "@/components/post-work-form";
+import { usePostWorkDrawer } from "@/components/post-work-drawer";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
@@ -32,126 +22,103 @@ const navItems = [
 export function BottomNav() {
   const pathname = usePathname();
   const { data: session } = useSession();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { setOpen: openPostWork } = usePostWorkDrawer();
 
   const profileHref = session ? "/profile" : "/auth/login";
   const profileLabel = session ? "Profile" : "Login";
 
   return (
-    <>
-      {/* Post Work Bottom Sheet */}
-      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-        <DrawerContent className="max-h-[90vh]">
-          <div className="flex items-center justify-between px-4 pt-1 pb-0">
-            <DrawerHeader className="p-0">
-              <DrawerTitle className="text-base font-bold">Post Your Work</DrawerTitle>
-              <DrawerDescription className="text-xs">
-                Tell us what you need help with
-              </DrawerDescription>
-            </DrawerHeader>
-            <DrawerClose className="p-1.5 -mr-1 rounded-full hover:bg-muted transition-colors">
-              <X className="h-4 w-4 text-muted-foreground" />
-            </DrawerClose>
-          </div>
-          <div className="overflow-y-auto px-4 pb-4 pt-3">
-            <PostWorkForm onSuccess={() => setDrawerOpen(false)} />
-          </div>
-        </DrawerContent>
-      </Drawer>
+    <nav
+      className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-border bg-white"
+      aria-label="Bottom navigation"
+    >
+      <div className="flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] h-16">
+        {navItems.map((item) => {
+          const isActive = item.href === "/"
+            ? pathname === "/"
+            : pathname.startsWith(item.href);
 
-      {/* Bottom Navigation */}
-      <nav
-        className="fixed bottom-0 left-0 right-0 z-50 md:hidden border-t border-border bg-white"
-        aria-label="Bottom navigation"
-      >
-        <div className="flex items-end justify-around px-1 pb-[env(safe-area-inset-bottom)] h-16">
-          {navItems.map((item) => {
-            const isActive = item.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(item.href);
-
-            if (item.isCta) {
-              return (
-                <button
-                  key={item.href}
-                  type="button"
-                  onClick={() => setDrawerOpen(true)}
-                  className="flex flex-col items-center justify-center -mt-4 group"
-                  aria-label={item.label}
-                >
-                  <span className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white shadow-lg shadow-primary/30 group-active:scale-95 transition-transform">
-                    <item.icon className="h-6 w-6" strokeWidth={2} />
-                  </span>
-                  <span className="text-[10px] font-semibold text-primary mt-0.5">
-                    {item.label}
-                  </span>
-                </button>
-              );
-            }
-
+          if (item.isCta) {
             return (
-              <Link
+              <button
                 key={item.href}
-                href={item.href}
-                className={`flex flex-col items-center justify-center py-2 px-3 min-w-[56px] group transition-colors ${
-                  isActive ? "text-primary" : "text-muted-foreground"
-                }`}
-                aria-current={isActive ? "page" : undefined}
+                type="button"
+                onClick={() => openPostWork(true)}
+                className="flex flex-col items-center justify-center -mt-4 group"
+                aria-label={item.label}
               >
-                <item.icon
-                  className={`h-5 w-5 transition-colors ${
-                    isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
-                  }`}
-                  strokeWidth={isActive ? 2.5 : 2}
-                />
-                <span
-                  className={`text-[10px] mt-0.5 transition-colors ${
-                    isActive ? "font-semibold text-primary" : "font-medium group-hover:text-foreground"
-                  }`}
-                >
+                <span className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white shadow-lg shadow-primary/30 group-active:scale-95 transition-transform">
+                  <item.icon className="h-6 w-6" strokeWidth={2} />
+                </span>
+                <span className="text-[10px] font-semibold text-primary mt-0.5">
                   {item.label}
                 </span>
-                {isActive && (
-                  <span className="absolute bottom-0 h-0.5 w-8 rounded-full bg-primary" />
-                )}
-              </Link>
+              </button>
             );
-          })}
+          }
 
-          {/* Profile / Login */}
-          <Link
-            href={profileHref}
-            className={`flex flex-col items-center justify-center py-2 px-3 min-w-[56px] group transition-colors ${
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex flex-col items-center justify-center py-2 px-3 min-w-14 group transition-colors ${
+                isActive ? "text-primary" : "text-muted-foreground"
+              }`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              <item.icon
+                className={`h-5 w-5 transition-colors ${
+                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                }`}
+                strokeWidth={isActive ? 2.5 : 2}
+              />
+              <span
+                className={`text-[10px] mt-0.5 transition-colors ${
+                  isActive ? "font-semibold text-primary" : "font-medium group-hover:text-foreground"
+                }`}
+              >
+                {item.label}
+              </span>
+              {isActive && (
+                <span className="absolute bottom-0 h-0.5 w-8 rounded-full bg-primary" />
+              )}
+            </Link>
+          );
+        })}
+
+        {/* Profile / Login */}
+        <Link
+          href={profileHref}
+          className={`flex flex-col items-center justify-center py-2 px-3 min-w-14 group transition-colors ${
+            pathname.startsWith("/profile") || pathname.startsWith("/auth")
+              ? "text-primary"
+              : "text-muted-foreground"
+          }`}
+          aria-current={pathname.startsWith("/profile") ? "page" : undefined}
+        >
+          <User
+            className={`h-5 w-5 transition-colors ${
               pathname.startsWith("/profile") || pathname.startsWith("/auth")
                 ? "text-primary"
-                : "text-muted-foreground"
+                : "text-muted-foreground group-hover:text-foreground"
             }`}
-            aria-current={pathname.startsWith("/profile") ? "page" : undefined}
+            strokeWidth={
+              pathname.startsWith("/profile") || pathname.startsWith("/auth")
+                ? 2.5
+                : 2
+            }
+          />
+          <span
+            className={`text-[10px] mt-0.5 transition-colors ${
+              pathname.startsWith("/profile") || pathname.startsWith("/auth")
+                ? "font-semibold text-primary"
+                : "font-medium group-hover:text-foreground"
+            }`}
           >
-            <User
-              className={`h-5 w-5 transition-colors ${
-                pathname.startsWith("/profile") || pathname.startsWith("/auth")
-                  ? "text-primary"
-                  : "text-muted-foreground group-hover:text-foreground"
-              }`}
-              strokeWidth={
-                pathname.startsWith("/profile") || pathname.startsWith("/auth")
-                  ? 2.5
-                  : 2
-              }
-            />
-            <span
-              className={`text-[10px] mt-0.5 transition-colors ${
-                pathname.startsWith("/profile") || pathname.startsWith("/auth")
-                  ? "font-semibold text-primary"
-                  : "font-medium group-hover:text-foreground"
-              }`}
-            >
-              {profileLabel}
-            </span>
-          </Link>
-        </div>
-      </nav>
-    </>
+            {profileLabel}
+          </span>
+        </Link>
+      </div>
+    </nav>
   );
 }
