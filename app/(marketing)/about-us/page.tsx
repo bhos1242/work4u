@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   GraduationCap,
   Shield,
@@ -100,41 +101,57 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision - combined compact */}
-      <section className="py-8 md:py-12">
+      {/* Mission & Vision - Image & Content */}
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-            {/* Who We Are */}
-            <div className="rounded-2xl border border-border bg-card p-5 md:p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-                  <HeartHandshake className="h-5 w-5 text-primary" strokeWidth={2} />
-                </div>
-                <h2 className="text-lg font-bold text-foreground">Who We Are</h2>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Work4U was born from a simple observation — too many senior citizens
-                in Pune live alone while their children work in other cities. We connect
-                these elders with caring, Aadhar-verified college students who provide
-                daily companionship, help with meals and medicines, and bring warmth
-                to their everyday lives. Every service also supports a student&apos;s education.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Image side */}
+            <div className="relative w-full aspect-4/3 lg:aspect-square max-h-125 rounded-3xl overflow-hidden border border-border shadow-xl">
+              <Image 
+                src="/images/about-mission.png" 
+                alt="Caregiver reading newspaper with a senior citizen" 
+                fill 
+                className="object-cover hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
             </div>
 
-            {/* Our Vision */}
-            <div className="rounded-2xl border border-border bg-card p-5 md:p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
-                  <Target className="h-5 w-5 text-secondary" strokeWidth={2} />
+            {/* Text Side */}
+            <div className="flex flex-col gap-4 md:gap-6">
+              {/* Who We Are */}
+              <div className="rounded-2xl border border-border bg-card p-5 md:p-8 hover:shadow-lg transition-shadow relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                    <HeartHandshake className="h-5 w-5 text-primary" strokeWidth={2} />
+                  </div>
+                  <h2 className="text-xl font-bold text-foreground">Who We Are</h2>
                 </div>
-                <h2 className="text-lg font-bold text-foreground">Our Vision</h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  Work4U was born from a simple observation — too many senior citizens
+                  in Pune live alone while their children work in other cities. We connect
+                  these elders with caring, Aadhar-verified college students who provide
+                  daily companionship, help with meals and medicines, and bring warmth
+                  to their everyday lives. Every service also supports a student&apos;s education.
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                We envision a Pune where no senior citizen feels lonely or helpless at home.
-                By building a trusted network of young, trained caregivers, we aim to make
-                compassionate elder care accessible and affordable for every family —
-                while giving students the dignity of earning through meaningful work.
-              </p>
+
+              {/* Our Vision */}
+              <div className="rounded-2xl border border-border bg-card p-5 md:p-8 hover:shadow-lg transition-shadow relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-secondary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/10">
+                    <Target className="h-5 w-5 text-secondary" strokeWidth={2} />
+                  </div>
+                  <h2 className="text-xl font-bold text-foreground">Our Vision</h2>
+                </div>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  We envision a Pune where no senior citizen feels lonely or helpless at home.
+                  By building a trusted network of young, trained caregivers, we aim to make
+                  compassionate elder care accessible and affordable for every family —
+                  while giving students the dignity of earning through meaningful work.
+                </p>
+              </div>
             </div>
           </div>
         </div>
