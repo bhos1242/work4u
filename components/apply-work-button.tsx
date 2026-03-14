@@ -19,14 +19,14 @@ export function ApplyWorkButton({
       <Button
         type="button"
         size="lg"
-        variant="outline"
+        variant="ghost"
         className={`md:hidden ${className}`}
         onClick={() => setOpen(true)}
       >
         {children}
       </Button>
       {/* Desktop: navigate */}
-      <Button asChild size="lg" variant="outline" className={`hidden md:inline-flex ${className}`}>
+      <Button asChild size="lg" variant="ghost" className={`hidden md:inline-flex ${className}`}>
         <Link href="/be-a-tasker">{children}</Link>
       </Button>
     </>

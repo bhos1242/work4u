@@ -422,7 +422,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Link>
               </Button>
-              <ApplyWorkButton className="border-2 border-white/30 text-white hover:bg-white/10 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
+              <ApplyWorkButton className="border-2 border-white text-white hover:bg-white/10 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
                 Become a Helper
               </ApplyWorkButton>
             </div>
