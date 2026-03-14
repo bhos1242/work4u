@@ -75,7 +75,7 @@ type PostWorkFormData = z.infer<typeof postWorkSchema>;
 
 const TOTAL_STEPS = 7;
 
-export function PostWorkForm() {
+export function PostWorkForm({ onSuccess }: { onSuccess?: () => void } = {}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session } = useSession();
@@ -160,6 +160,7 @@ export function PostWorkForm() {
       });
       if (!res.ok) throw new Error("Failed to post work");
       toast.success("Work posted successfully! We'll match you with a helper.");
+      onSuccess?.();
       router.push("/my-tasks");
     } catch {
       toast.error("Something went wrong. Please try again.");
