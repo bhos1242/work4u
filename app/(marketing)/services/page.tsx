@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   HeartHandshake,
@@ -18,6 +12,8 @@ import {
   CheckCircle,
   ArrowRight,
   MessageCircle,
+  Sparkles,
+  Star,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -44,6 +40,9 @@ const activeServices = [
     cta: "/post-work?category=Senior+Citizens+Caretaking",
     ctaLabel: "Book Caretaking",
     featured: true,
+    gradient: "from-emerald-500 to-teal-600",
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-600",
   },
   {
     icon: BookOpen,
@@ -60,6 +59,9 @@ const activeServices = [
     cta: "/post-work?category=Personal+Home+Tutor",
     ctaLabel: "Book Tutoring",
     featured: false,
+    gradient: "from-blue-500 to-indigo-600",
+    iconBg: "bg-blue-500/10",
+    iconColor: "text-blue-600",
   },
   {
     icon: Monitor,
@@ -77,6 +79,9 @@ const activeServices = [
     cta: "/post-work?category=Computer%2FTech+Work",
     ctaLabel: "Book Tech Help",
     featured: false,
+    gradient: "from-violet-500 to-purple-600",
+    iconBg: "bg-violet-500/10",
+    iconColor: "text-violet-600",
   },
 ];
 
@@ -102,132 +107,142 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-20 bg-linear-to-b from-primary/10 to-background">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-foreground">
+      <section className="relative py-10 md:py-14 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-primary/8 via-background to-secondary/5" />
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-secondary/8 blur-3xl" />
+        <div className="max-w-6xl mx-auto px-4 relative z-10 text-center">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold tracking-wide uppercase mb-4">
+            <Sparkles className="h-3 w-3" />
+            Verified Student Helpers
+          </div>
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
             Our Services
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive home services by verified student helpers
+          <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-lg mx-auto">
+            Affordable, reliable home services by Aadhar-verified college students in Pune
           </p>
         </div>
       </section>
 
       {/* Active Services */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 space-y-8">
+      <section className="py-8 md:py-12">
+        <div className="max-w-6xl mx-auto px-4 space-y-6">
           {activeServices.map((service) => (
-            <Card
+            <div
               key={service.title}
-              className={`overflow-hidden ${
-                service.featured ? "border-2 border-primary" : "border border-border"
+              className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 ${
+                service.featured
+                  ? "border-primary/30 bg-card"
+                  : "border-border bg-card"
               }`}
             >
-              <div className="grid md:grid-cols-3">
-                <CardHeader className="md:col-span-1 bg-surface flex flex-col items-center justify-center py-10">
+              {/* Gradient accent bar */}
+              <div className={`h-1 bg-linear-to-r ${service.gradient}`} />
+
+              <div className="grid md:grid-cols-[280px_1fr] gap-0">
+                {/* Left panel */}
+                <div className="flex flex-col items-center justify-center p-6 md:p-8 bg-linear-to-b from-surface to-card md:border-r border-border">
                   {service.featured && (
-                    <Badge className="mb-4 bg-primary text-primary-foreground">
+                    <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-semibold">
+                      <Star className="h-3 w-3 mr-1 fill-primary" />
                       Most Popular
                     </Badge>
                   )}
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-                    <service.icon
-                      className="h-10 w-10 text-primary"
-                      strokeWidth={2}
-                    />
+                  <div className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.iconBg} group-hover:scale-105 transition-transform`}>
+                    <service.icon className={`h-8 w-8 ${service.iconColor}`} strokeWidth={1.8} />
                   </div>
-                  <CardTitle className="mt-4 text-xl text-center">
+                  <h2 className="mt-3 text-lg font-bold text-foreground text-center">
                     {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="md:col-span-2 py-8 px-8">
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  </h2>
+                </div>
+
+                {/* Right content */}
+                <div className="p-5 md:p-6">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     {service.description}
                   </p>
-                  <div className="grid sm:grid-cols-2 gap-2 mb-6">
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-5">
                     {service.subServices.map((sub) => (
                       <div
                         key={sub}
-                        className="flex items-center gap-2 text-sm text-foreground"
+                        className="flex items-start gap-2 text-sm text-foreground"
                       >
-                        <CheckCircle className="h-4 w-4 text-success shrink-0" />
-                        {sub}
+                        <CheckCircle className="h-4 w-4 text-success shrink-0 mt-0.5" strokeWidth={2.5} />
+                        <span className="leading-snug">{sub}</span>
                       </div>
                     ))}
                   </div>
+
                   <Button
                     asChild
-                    className="bg-primary text-primary-foreground hover:bg-primary-dark min-h-12 px-6 font-semibold rounded-lg"
+                    size="sm"
+                    className="bg-primary text-primary-foreground hover:bg-primary-dark h-10 px-5 font-semibold rounded-lg text-sm"
                   >
                     <Link href={service.cta}>
                       {service.ctaLabel}
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-1.5 h-4 w-4" />
                     </Link>
                   </Button>
-                </CardContent>
+                </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </section>
 
       {/* Coming Soon */}
-      <section className="py-20 bg-surface">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+      <section className="py-8 md:py-12 bg-surface">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
               Coming Soon
             </h2>
-            <p className="mt-3 text-lg text-muted-foreground">
+            <p className="mt-1.5 text-sm text-muted-foreground">
               We&apos;re expanding our service offerings
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {comingSoonServices.map((service) => (
-              <Card
+              <div
                 key={service.title}
-                className="text-center border border-border opacity-80"
+                className="relative text-center bg-card rounded-xl border border-border p-5 opacity-75 hover:opacity-100 transition-opacity"
               >
-                <CardContent className="pt-8 pb-6 px-6">
-                  <Badge variant="secondary" className="mb-4">
-                    Coming Soon
-                  </Badge>
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-muted">
-                    <service.icon
-                      className="h-7 w-7 text-muted-foreground"
-                      strokeWidth={2.5}
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+                <Badge variant="secondary" className="mb-3 text-[10px] uppercase tracking-wider">
+                  Coming Soon
+                </Badge>
+                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-muted">
+                  <service.icon className="h-6 w-6 text-muted-foreground" strokeWidth={2} />
+                </div>
+                <h3 className="text-base font-semibold text-foreground mb-1">
+                  {service.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-lg text-muted-foreground mb-4">
+      <section className="py-8 md:py-12">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground mb-3">
             Don&apos;t see what you need?
           </p>
           <Button
             asChild
-            size="lg"
-            className="bg-[#25D366] text-white hover:bg-[#20BD5A] min-h-12 px-8 font-semibold rounded-lg text-base"
+            size="sm"
+            className="bg-[#25D366] text-white hover:bg-[#20BD5A] h-10 px-6 font-semibold rounded-lg text-sm"
           >
             <a
               href="https://wa.me/918421502803?text=Hi,%20I%20need%20help%20with..."
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="mr-2 h-5 w-5" />
+              <MessageCircle className="mr-1.5 h-4 w-4" />
               Contact us on WhatsApp
             </a>
           </Button>
