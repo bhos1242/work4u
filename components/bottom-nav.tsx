@@ -41,19 +41,19 @@ export function BottomNav() {
     <>
       {/* Post Work Bottom Sheet */}
       <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-        <DrawerContent className="max-h-[92vh]">
-          <div className="flex items-center justify-between px-4 pt-2">
+        <DrawerContent className="max-h-[90vh]">
+          <div className="flex items-center justify-between px-4 pt-1 pb-0">
             <DrawerHeader className="p-0">
-              <DrawerTitle className="text-lg font-bold">Post Your Work</DrawerTitle>
-              <DrawerDescription className="text-sm">
+              <DrawerTitle className="text-base font-bold">Post Your Work</DrawerTitle>
+              <DrawerDescription className="text-xs">
                 Tell us what you need help with
               </DrawerDescription>
             </DrawerHeader>
-            <DrawerClose className="p-2 -mr-2 rounded-full hover:bg-muted transition-colors">
-              <X className="h-5 w-5 text-muted-foreground" />
+            <DrawerClose className="p-1.5 -mr-1 rounded-full hover:bg-muted transition-colors">
+              <X className="h-4 w-4 text-muted-foreground" />
             </DrawerClose>
           </div>
-          <div className="overflow-y-auto px-4 pb-6 pt-4">
+          <div className="overflow-y-auto px-4 pb-4 pt-3">
             <PostWorkForm onSuccess={() => setDrawerOpen(false)} />
           </div>
         </DrawerContent>
