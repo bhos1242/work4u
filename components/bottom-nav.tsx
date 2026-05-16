@@ -5,18 +5,18 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
   Home,
-  Search,
+  Heart,
   PlusCircle,
-  Briefcase,
+  GraduationCap,
   User,
 } from "lucide-react";
 import { usePostWorkDrawer } from "@/components/post-work-drawer";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/tasks", label: "Search", icon: Search },
-  { href: "/post-work", label: "Post Work", icon: PlusCircle, isCta: true },
-  { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/for-seniors", label: "Families", icon: Heart },
+  { href: "/post-work", label: "Request Care", icon: PlusCircle, isCta: true },
+  { href: "/for-students", label: "Students", icon: GraduationCap },
 ];
 
 export function BottomNav() {

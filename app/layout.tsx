@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Work4U Services - Trusted Elder Care & Home Help in Pune",
+    default: "Work4U — Every elder deserves company. Every student deserves purpose.",
     template: "%s | Work4U Services",
   },
   description:
-    "Pune's trusted elder care service. Aadhar-verified student caregivers provide compassionate companionship, daily assistance, and peace of mind for your loved ones. Starting at ₹99.",
+    "A Pune-born social movement connecting Aadhaar-verified student caregivers with senior citizens. Contribution-based. No profit, no loss. 2nd Place — Azim Premji University National Social Enterprise Challenge.",
   keywords: [
     "elder care Pune",
     "senior citizen care Pune",

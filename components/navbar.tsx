@@ -24,10 +24,11 @@ import {
   Menu,
   X,
   Home,
-  Briefcase,
+  Heart,
+  GraduationCap,
   Users,
+  TrendingUp,
   BookOpen,
-  Search,
   ArrowRight,
   LogIn,
   User,
@@ -39,10 +40,11 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/services", label: "Services", icon: Briefcase },
+  { href: "/for-seniors", label: "For Families", icon: Heart },
+  { href: "/for-students", label: "For Students", icon: GraduationCap },
+  { href: "/impact", label: "Impact", icon: TrendingUp },
   { href: "/about-us", label: "About Us", icon: Users },
   { href: "/blogs", label: "Blog", icon: BookOpen },
-  { href: "/tasks", label: "Search Work", icon: Search },
 ];
 
 export function Navbar() {
@@ -92,7 +94,7 @@ export function Navbar() {
             className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary-dark h-9 px-4 font-semibold rounded-lg text-sm"
           >
             <Link href="/post-work">
-              Post a Work
+              Request Care
               <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </Link>
           </Button>
@@ -234,7 +236,7 @@ export function Navbar() {
                   className="w-full bg-primary text-primary-foreground hover:bg-primary-dark h-10 font-semibold rounded-xl text-sm"
                 >
                   <Link href="/post-work" onClick={() => setMobileOpen(false)}>
-                    Post a Work
+                    Request Care
                     <ArrowRight className="ml-1.5 h-4 w-4" />
                   </Link>
                 </Button>

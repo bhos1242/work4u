@@ -4,16 +4,17 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/f
 
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/post-work", label: "Post Work" },
-  { href: "/tasks", label: "Search Work" },
-  { href: "/services", label: "Services" },
+  { href: "/for-seniors", label: "For Families" },
+  { href: "/for-students", label: "For Students" },
+  { href: "/impact", label: "Impact" },
   { href: "/about-us", label: "About Us" },
 ];
 
 const legalLinks = [
+  { href: "/post-work", label: "Request Care" },
+  { href: "/be-a-tasker", label: "Be Part of This" },
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
-  { href: "/be-a-tasker", label: "Become a Helper" },
 ];
 
 const socialLinks = [
@@ -38,13 +39,13 @@ export function Footer() {
       <div className="bg-primary">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm font-medium text-primary-foreground text-center sm:text-left">
-            Need care for your loved ones? Get matched with a verified caregiver today.
+            Every elder deserves company. Every student deserves purpose. Join the movement.
           </p>
           <Link
             href="/post-work"
             className="inline-flex items-center gap-1.5 bg-white text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors shrink-0"
           >
-            Post a Work
+            Request Care
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -61,12 +62,11 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-gray-400 leading-relaxed max-w-[240px]">
-              Trusted elder care in Pune. Aadhar-verified student caregivers
-              who bring companionship, daily help, and peace of mind to your
-              loved ones.
+              A Pune-born social movement connecting student caregivers with
+              senior citizens. No profit. No loss. Just care, opportunity, and community.
             </p>
             <p className="text-[10px] text-gray-500 italic uppercase tracking-wider">
-              Care That Feels Like Family
+              2nd Place · Azim Premji University
             </p>
             {/* Social */}
             <div className="flex items-center gap-2 pt-1">

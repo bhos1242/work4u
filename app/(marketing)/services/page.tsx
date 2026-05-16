@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Elder Care & Home Services in Pune",
   description:
-    "Compassionate elder care, home tutoring, and tech help by Aadhar-verified student caregivers in Pune. Trusted by 500+ families. Starting at ₹99.",
+    "Compassionate elder care, home tutoring, and tech help by Aadhaar-verified student caregivers in Pune. Contribution-based. Trusted by 500+ families.",
 };
 
 const activeServices = [

@@ -66,18 +66,17 @@ const whyChooseUs = [
   },
   {
     icon: IndianRupee,
-    title: "Affordable for Families",
-    description: "Quality elder care starting at ₹99 — because good care shouldn't be a luxury",
+    title: "Contribution-Based",
+    description: "No profit, no loss. Free where the family cannot afford — because care shouldn't depend on income.",
   },
 ];
 
 const team = [
-  { name: "Ajay Pathade", title: "Founder & CEO", color: "bg-primary" },
-  { name: "Vivek Bhos", title: "Co-Founder & CTO", color: "bg-blue-600" },
-  { name: "Vishnu Palaskar", title: "Co-Founder & COO", color: "bg-emerald-600" },
-  { name: "Rahul Mane", title: "Co-Founder & CFO", color: "bg-violet-600" },
-  { name: "Sudarshan Pathade", title: "Co-Founder & SMM", color: "bg-amber-600" },
-
+  { name: "Ajay Pathade", title: "Founder — Vision & Growth", color: "bg-orange-500" },
+  { name: "Sakshi Thorat", title: "Co-Founder — Community & Girl Caregivers", color: "bg-pink-500" },
+  { name: "Vivek Bhos", title: "Co-Founder — Tech", color: "bg-blue-600" },
+  { name: "Amol Pawar", title: "Head of Operations — 5 yrs Caretaking", color: "bg-emerald-600" },
+  { name: "Avdhut Atre", title: "Advisor — Azim Premji Alumnus, NGO Sector", color: "bg-violet-600" },
 ];
 
 export default function AboutPage() {

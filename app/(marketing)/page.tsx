@@ -4,45 +4,78 @@ import { Button } from "@/components/ui/button";
 import {
   Shield,
   Heart,
-  IndianRupee,
   HeartHandshake,
   BookOpen,
   Monitor,
-  ClipboardList,
-  Search,
-  CheckCircle,
   ArrowRight,
-  Sparkles,
   Users,
-  Star,
+  Award,
+  Sparkles,
+  Clock,
+  MapPin,
+  GraduationCap,
+  ShieldCheck,
+  HandHeart,
 } from "lucide-react";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
-import { ServiceAreaSearch } from "@/components/service-area-search";
 import { ScrollRevealProvider } from "@/components/scroll-reveal-provider";
-import { ApplyWorkButton } from "@/components/apply-work-button";
 
-const trustItems = [
+const ctas = [
   {
-    icon: Shield,
-    title: "Aadhar Verified",
-    description: "Every caregiver is government ID-verified so your family stays safe",
-    stat: "100%",
-    statLabel: "Verified",
-  },
-  {
+    href: "/post-work",
+    title: "Request Care for My Loved One",
+    desc: "Families looking for trusted, verified care for their senior loved ones.",
     icon: Heart,
-    title: "Trained Caregivers",
-    description: "Students trained in elder care — patience, empathy, and respect come first",
-    stat: "500+",
-    statLabel: "Families Served",
+    accent: "from-rose-500/15 to-pink-500/10",
+    iconColor: "text-rose-600",
+    iconBg: "bg-rose-500/10",
+    label: "For Families",
   },
   {
-    icon: IndianRupee,
-    title: "Affordable Care",
-    description: "Quality elder care that doesn't burden your family's budget",
-    stat: "₹99",
-    statLabel: "Starting From",
+    href: "/for-students",
+    title: "Become a Student Caregiver",
+    desc: "College students — especially girls — looking for safe, meaningful, flexible work.",
+    icon: GraduationCap,
+    accent: "from-violet-500/15 to-indigo-500/10",
+    iconColor: "text-violet-600",
+    iconBg: "bg-violet-500/10",
+    label: "For Students",
   },
+  {
+    href: "/impact",
+    title: "Support the Movement",
+    desc: "Donors, CSR teams, NGOs, and well-wishers who want to contribute.",
+    icon: HandHeart,
+    accent: "from-emerald-500/15 to-teal-500/10",
+    iconColor: "text-emerald-600",
+    iconBg: "bg-emerald-500/10",
+    label: "For Supporters",
+  },
+];
+
+const impactStats = [
+  { label: "Seniors Supported", value: "500+" },
+  { label: "Student Caregivers", value: "Growing" },
+  { label: "Hours of Care Given", value: "Live" },
+  { label: "Pune Areas Covered", value: "11+" },
+];
+
+const movementPoints = [
+  "Real hands-on elder care experience",
+  "Official Work4U Certificate of Social Service",
+  "Flexible hours — morning, evening, weekend",
+  "Small stipend — contribution from the family",
+  "Personally trained by Amol Pawar (5 yrs caretaking)",
+  "A community of like-minded, caring young people",
+];
+
+const girlPoints = [
+  "50%+ girl caregivers in every batch",
+  "Safe, Aadhaar-verified homes — every family screened",
+  "Co-founder Sakshi Thorat leads the girl community",
+  "Flexible, dignified work that fits college life",
+  "Be the reason an elder feels less alone today",
+  "100+ girl caregivers across Pune & growing",
 ];
 
 const services = [
@@ -51,75 +84,64 @@ const services = [
     image: "/images/elder-companion.png",
     title: "Elder Care & Companionship",
     description:
-      "Your parents deserve warmth, not loneliness. Our trained student caregivers provide daily companionship, meal help, and gentle care so your loved ones feel safe and valued.",
-    items: [
-      "Daily companionship & conversation",
-      "Meal prep & feeding assistance",
-      "Medicine reminders",
-      "Mobility & walking support",
-      "Doctor visit accompaniment",
-    ],
-    color: "from-emerald-500/10 to-teal-500/10",
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-600",
+      "Daily companionship, meal help, medicine reminders, and doctor visits — so your loved ones feel safe and valued.",
   },
   {
     icon: BookOpen,
     image: "/images/tutoring.png",
     title: "Home Tutoring",
     description:
-      "College students who make learning personal. One-on-one tutoring at your doorstep for children of all ages.",
-    items: [
-      "Math & Science",
-      "English & Languages",
-      "Homework guidance",
-      "Exam preparation",
-      "Skill-based learning",
-    ],
-    color: "from-blue-500/10 to-indigo-500/10",
-    iconBg: "bg-blue-500/10",
-    iconColor: "text-blue-600",
+      "College students who make learning personal. One-on-one tutoring at your doorstep.",
   },
   {
     icon: Monitor,
     image: "/images/student-caregiver.png",
     title: "Tech Help for Seniors",
     description:
-      "Smartphones, UPI, video calls — our tech-savvy students patiently teach and troubleshoot so elders stay connected with family.",
-    items: [
-      "Phone & tablet setup",
-      "UPI & online banking help",
-      "Video calling setup",
-      "Online form filling",
-      "Virus removal & security",
-    ],
-    color: "from-violet-500/10 to-purple-500/10",
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-600",
+      "Phones, UPI, video calls — patient students teach elders to stay connected with family.",
   },
 ];
 
-const steps = [
+const team = [
   {
-    icon: ClipboardList,
-    title: "Tell Us What You Need",
-    description:
-      "Share what care or help your family needs — area, timing, and budget",
-    num: "01",
+    name: "Ajay Pathade",
+    role: "Founder",
+    initials: "AP",
+    bg: "bg-orange-500",
+    quote:
+      "I started Work4U because I saw two problems no one was connecting — lonely elders and purposeless students. We just needed to bridge them.",
   },
   {
-    icon: Search,
-    title: "We Match a Caregiver",
-    description:
-      "A verified, trained student caregiver in your area is assigned within hours",
-    num: "02",
+    name: "Sakshi Thorat",
+    role: "Co-Founder",
+    initials: "ST",
+    bg: "bg-pink-500",
+    quote:
+      "Care is a language everyone understands. I want Work4U to speak it louder than anyone — especially for the girls who join us.",
   },
   {
-    icon: CheckCircle,
-    title: "Care Begins",
-    description:
-      "Your caregiver arrives and your family gets the help they deserve. Pay after satisfaction",
-    num: "03",
+    name: "Vivek Bhos",
+    role: "Co-Founder",
+    initials: "VB",
+    bg: "bg-blue-500",
+    quote:
+      "Technology should serve people, not the other way around. Work4U is proof of that.",
+  },
+  {
+    name: "Amol Pawar",
+    role: "Head of Operations",
+    initials: "AP",
+    bg: "bg-emerald-500",
+    quote:
+      "I have seen what loneliness does to elders. Work4U is the answer I wished had existed years ago.",
+  },
+  {
+    name: "Avdhut Atre",
+    role: "Advisor",
+    initials: "AA",
+    bg: "bg-violet-500",
+    quote:
+      "Social change needs both heart and system. Work4U has both.",
   },
 ];
 
@@ -128,185 +150,226 @@ export default function Home() {
     <ScrollRevealProvider>
       <div className="flex flex-col overflow-x-hidden">
         {/* ─── HERO ─── */}
-        <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden">
-          {/* Background decorations */}
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-br from-secondary/5 via-background to-accent/10" />
           <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/20 blur-3xl" />
 
-          <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 relative z-10 w-full">
-            <div className="grid gap-8 lg:grid-cols-2 items-center">
-              {/* Left - text */}
-              <div className="space-y-5 md:space-y-6 max-w-xl">
-             
-                <h1 className="text-3xl leading-[1.15] font-extrabold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
-                  Trusted Care for
-                  <br />
-                  Your <span className="gradient-text">Loved Ones</span>
-                </h1>
-
-                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Work4U connects Pune families with <strong className="text-foreground">Aadhar-verified student caregivers</strong> who
-                  provide compassionate elder care, daily companionship, and home assistance.
-                  Every booking supports a student&apos;s education.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-primary text-white hover:bg-primary-dark h-12 md:h-14 px-6 md:px-8 font-semibold rounded-xl text-sm md:text-base shadow-lg shadow-primary/25 transition-all hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
-                  >
-                    <Link href="/post-work">
-                      Post a Work
-                      <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                    </Link>
-                  </Button>
-                  <ApplyWorkButton className="border-2 border-primary text-primary hover:bg-primary hover:text-white h-12 md:h-14 px-6 md:px-8 font-semibold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
-                    Apply For Work
-                  </ApplyWorkButton>
-                </div>
-
-                {/* Mini social proof */}
-                <div className="flex items-center gap-3 pt-1">
-                  <div className="flex -space-x-2">
-                    {["bg-primary", "bg-blue-500", "bg-amber-500", "bg-pink-500"].map((bg, i) => (
-                      <div
-                        key={i}
-                        className={`h-8 w-8 rounded-full ${bg} border-2 border-white flex items-center justify-center text-white text-xs font-bold`}
-                      >
-                        {["A", "V", "S", "R"][i]}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-sm">
-                    <div className="flex items-center gap-0.5 text-warning">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-3 w-3 fill-current" />
-                      ))}
-                    </div>
-                    <p className="text-xs text-muted-foreground">Trusted by <strong className="text-foreground">500+</strong> Pune families</p>
-                  </div>
-                </div>
+          <div className="max-w-6xl mx-auto px-4 pt-10 pb-12 md:pt-16 md:pb-16 relative z-10">
+            {/* Award badge */}
+            <div className="flex justify-center mb-6 fade-up">
+              <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 text-xs sm:text-sm font-semibold text-amber-700">
+                <Award className="h-4 w-4" />
+                2nd Place · Azim Premji University National Social Enterprise Challenge
               </div>
+            </div>
 
-              {/* Right - visual card */}
-              <div className="hidden lg:flex justify-center w-full">
-                <div className="relative w-full max-w-[500px] aspect-[6/5] rounded-3xl overflow-hidden border border-border shadow-2xl shadow-primary/10">
-                  <Image
-                    src="/images/services-hero.png"
-                    alt="Trusted Care Services"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
-                  
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3">
-                      <HeartHandshake className="h-7 w-7 text-white" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-1.5 shadow-sm">
-                      Care That Feels Like Family
-                    </h3>
-                    <p className="text-sm text-white/90">
-                      Trained student caregivers your parents will love
-                    </p>
-                  </div>
+            {/* Hero headline */}
+            <div className="text-center max-w-3xl mx-auto space-y-4 fade-up">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground">
+                Every elder deserves <span className="gradient-text">company</span>.
+                <br className="hidden sm:block" />
+                Every student deserves <span className="gradient-text">purpose</span>.
+                <br className="hidden sm:block" />
+                We connect both.
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                Work4U is a Pune-born social movement — not a company, not an app.
+                A community of young people standing with elders who deserve warmth, not loneliness.
+              </p>
+              <p className="text-xs text-muted-foreground/80 italic">
+                Social Initiative · No Profit, No Loss · Since Feb 2024
+              </p>
+            </div>
 
-                  {/* Floating badge top right */}
-                  <div className="absolute top-6 right-6 glass rounded-2xl px-3.5 py-2 shadow-lg border border-white/40 flex items-center gap-2 bg-white/80 backdrop-blur-md">
-                    <Users className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-bold text-slate-900">500+ Caregivers</span>
+            {/* 3 CTAs */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-3 max-w-5xl mx-auto stagger-children">
+              {ctas.map((c) => (
+                <Link
+                  key={c.href}
+                  href={c.href}
+                  className="group relative bg-card rounded-2xl border border-border p-5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1 flex flex-col"
+                >
+                  <div className={`absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-linear-to-r ${c.accent}`} />
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground mb-3">
+                    {c.label}
+                  </span>
+                  <div className={`mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl ${c.iconBg}`}>
+                    <c.icon className={`h-5 w-5 ${c.iconColor}`} strokeWidth={2} />
                   </div>
-                </div>
-              </div>
+                  <h3 className="text-base font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3 flex-1">
+                    {c.desc}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
+                    Join the Movement
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ─── TRUST BAR ─── */}
-        <section className="py-8 md:py-12 relative">
-          <div className="absolute inset-0 bg-linear-to-b from-surface to-background" />
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="grid gap-4 sm:grid-cols-3 stagger-children">
-              {trustItems.map((item) => (
+        {/* ─── LIVE IMPACT COUNTER ─── */}
+        <section className="py-10 md:py-14 bg-surface relative">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">Our Impact So Far</span>
+              <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
+                Real People. Real Care. Real Change.
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
+                Numbers updated as the movement grows across Pune.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 stagger-children">
+              {impactStats.map((s) => (
                 <div
-                  key={item.title}
-                  className="group relative bg-card rounded-xl border border-border p-5 sm:p-6 text-center hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
+                  key={s.label}
+                  className="bg-card rounded-xl border border-border p-5 text-center hover:border-primary/30 transition-colors"
                 >
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
-                    <item.icon className="h-6 w-6 text-primary" strokeWidth={2} />
-                  </div>
-                  <p className="text-2xl font-extrabold text-primary mb-0.5">{item.stat}</p>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">{item.statLabel}</p>
-                  <h3 className="text-base font-bold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  <p className="text-2xl md:text-3xl font-extrabold text-primary">{s.value}</p>
+                  <p className="text-[11px] md:text-xs text-muted-foreground uppercase tracking-wider mt-1.5">
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ─── SERVICES ─── */}
-        <section className="py-8 md:py-12">
+        {/* ─── THE PROBLEM ─── */}
+        <section className="py-10 md:py-14">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-8 md:mb-10 fade-up">
-              <span className="section-badge mb-3">Our Services</span>
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">Two Sides. One Solution.</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                Care & Help Your Family Deserves
+                The Problem Work4U Solves
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
-                Elder care is our heart. We also help with tutoring and tech — all by trained, verified students.
+            </div>
+            <div className="grid gap-4 md:gap-6 md:grid-cols-2 stagger-children">
+              <div className="bg-card rounded-2xl border border-border p-6">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-rose-500/10 mb-4">
+                  <Heart className="h-5 w-5 text-rose-600" strokeWidth={2} />
+                </div>
+                <h3 className="text-base font-bold text-foreground mb-2">For Senior Citizens</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Lonely. Unsupported. Family living far away or too busy.
+                  No trusted person to talk to, help with meals, or accompany to the doctor.
+                  <span className="text-foreground font-semibold"> They deserve warmth, not loneliness.</span>
+                </p>
+              </div>
+              <div className="bg-card rounded-2xl border border-border p-6">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 mb-4">
+                  <GraduationCap className="h-5 w-5 text-violet-600" strokeWidth={2} />
+                </div>
+                <h3 className="text-base font-bold text-foreground mb-2">For Students & Youth</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Talented but underutilised. Especially girls and young women who want safe,
+                  meaningful, flexible work during college.
+                  <span className="text-foreground font-semibold"> They deserve opportunity, purpose, and a way to contribute.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── THE MOVEMENT ─── */}
+        <section className="py-10 md:py-14 bg-surface relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">The Movement</span>
+              <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
+                Why Every Student Should Join
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
+                Not an internship. Not a side hustle. A movement that puts care at the heart of growth.
               </p>
             </div>
 
-            <div className="grid gap-4 md:gap-6 md:grid-cols-3 stagger-children">
-              {services.map((service) => (
-                <div
-                  key={service.title}
-                  className="group relative bg-card rounded-xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                >
-                  {/* Gradient top strip */}
-                  <div className={`h-1 bg-linear-to-r ${service.color} relative z-20`} />
+            <div className="grid gap-4 md:gap-6 md:grid-cols-2 stagger-children">
+              <div className="bg-card rounded-2xl border border-border p-6">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  <h3 className="text-base font-bold text-foreground">What You Gain as a Caregiver</h3>
+                </div>
+                <ul className="space-y-2.5">
+                  {movementPoints.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-foreground">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-gradient-to-br from-pink-500/10 to-rose-500/5 rounded-2xl border border-pink-200 p-6">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Heart className="h-5 w-5 text-pink-600" />
+                  <h3 className="text-base font-bold text-foreground">Why Girls Are at the Heart of This</h3>
+                </div>
+                <ul className="space-y-2.5">
+                  {girlPoints.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-foreground">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-pink-600 shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-                  <div className="relative w-full h-48 overflow-hidden bg-muted">
+            <div className="mt-8 text-center fade-up">
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary text-white hover:bg-primary-dark h-12 md:h-13 px-7 font-semibold rounded-xl text-sm md:text-base shadow-lg shadow-primary/25"
+              >
+                <Link href="/for-students">
+                  Become a Student Caregiver
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── WHAT WE DO ─── */}
+        <section className="py-10 md:py-14">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">What We Do</span>
+              <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
+                Care That Feels Like Family
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
+                Contribution-based. Free where the family cannot afford. Always rooted in care.
+              </p>
+            </div>
+            <div className="grid gap-4 md:gap-6 md:grid-cols-3 stagger-children">
+              {services.map((s) => (
+                <div
+                  key={s.title}
+                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all hover:-translate-y-1"
+                >
+                  <div className="relative h-40 overflow-hidden bg-muted">
                     <Image
-                      src={service.image}
-                      alt={service.title}
+                      src={s.image}
+                      alt={s.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className={`absolute bottom-4 left-5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${service.iconBg} bg-background/95 backdrop-blur-sm shadow-md`}>
-                      <service.icon className={`h-5 w-5 ${service.iconColor}`} strokeWidth={2} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 backdrop-blur-sm shadow-md">
+                      <s.icon className="h-5 w-5 text-primary" strokeWidth={2} />
                     </div>
                   </div>
-
-                  <div className="p-5 sm:p-6 flex-1 flex flex-col">
-                    <h3 className="text-base font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors mt-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2 mb-4 flex-1">
-                      {service.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm text-foreground">
-                          <CheckCircle className="h-3.5 w-3.5 text-primary shrink-0" strokeWidth={2.5} />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href="/services"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all mt-auto"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
+                  <div className="p-5">
+                    <h3 className="text-base font-bold text-foreground mb-1.5">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
                   </div>
                 </div>
               ))}
@@ -314,60 +377,59 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── SERVICE AREAS ─── */}
-        <section className="py-8 md:py-12 bg-surface relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/3 blur-3xl" />
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="text-center mb-6 md:mb-8 fade-up">
-              <span className="section-badge mb-3">Coverage</span>
+        {/* ─── TRUST / SAFETY ─── */}
+        <section className="py-10 md:py-14 bg-surface">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">Why Families Trust Us</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                Areas We Serve in Pune
+                Safety is Non-Negotiable
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Currently available in these neighborhoods
-              </p>
             </div>
-            <div className="fade-up">
-              <ServiceAreaSearch />
+            <div className="grid gap-4 sm:grid-cols-3 stagger-children">
+              {[
+                { icon: ShieldCheck, t: "Aadhaar Verified", d: "Every student caregiver is government-ID verified before joining." },
+                { icon: Award, t: "National Recognition", d: "2nd Place at Azim Premji University Social Enterprise Challenge." },
+                { icon: Users, t: "500+ Families Served", d: "Real proof of impact, not a promise. Updated live." },
+              ].map((x) => (
+                <div key={x.t} className="bg-card rounded-2xl border border-border p-6 text-center">
+                  <div className="mx-auto mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+                    <x.icon className="h-5 w-5 text-primary" strokeWidth={2} />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-1.5">{x.t}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{x.d}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* ─── HOW IT WORKS ─── */}
-        <section className="py-8 md:py-12">
+        {/* ─── TEAM ─── */}
+        <section className="py-10 md:py-14">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-8 md:mb-10 fade-up">
-              <span className="section-badge mb-3">Simple Process</span>
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">The Team</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                How It Works
+                Real People. Real Mission.
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Get help in 3 simple steps
+              <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
+                Young Pune founders who believe care and opportunity should never be in short supply.
               </p>
             </div>
-
-            <div className="grid gap-6 md:grid-cols-3 stagger-children relative">
-              {steps.map((step, index) => (
-                <div key={step.title} className="relative text-center">
-                  {/* Connector */}
-                  {index < steps.length - 1 && (
-                    <div className="step-connector hidden md:block" />
-                  )}
-
-                  <div className="mx-auto mb-4 relative">
-                    <div className="h-14 w-14 md:h-16 md:w-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto relative z-10">
-                      <step.icon className="h-6 w-6 md:h-7 md:w-7 text-primary" strokeWidth={2} />
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger-children">
+              {team.map((m) => (
+                <div key={m.name} className="bg-card rounded-2xl border border-border p-5 flex flex-col">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`h-12 w-12 rounded-full ${m.bg} flex items-center justify-center text-white font-bold text-sm shadow`}>
+                      {m.initials}
                     </div>
-                    <span className="absolute -top-1.5 -right-1.5 h-6 w-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center z-20 shadow-md">
-                      {step.num.slice(-1)}
-                    </span>
+                    <div>
+                      <p className="text-sm font-bold text-foreground">{m.name}</p>
+                      <p className="text-xs text-muted-foreground">{m.role}</p>
+                    </div>
                   </div>
-
-                  <h3 className="text-base font-bold text-foreground mb-1.5">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                    {step.description}
+                  <p className="text-sm text-muted-foreground italic leading-relaxed">
+                    “{m.quote}”
                   </p>
                 </div>
               ))}
@@ -376,15 +438,15 @@ export default function Home() {
         </section>
 
         {/* ─── TESTIMONIALS ─── */}
-        <section className="py-8 md:py-12 bg-surface">
+        <section className="py-10 md:py-14 bg-surface">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-8 md:mb-10 fade-up">
-              <span className="section-badge mb-3">Testimonials</span>
+            <div className="text-center mb-8 fade-up">
+              <span className="section-badge mb-3">Stories</span>
               <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mt-3">
-                Families Trust Us
+                Real Faces. Real Change.
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Hear from families who found the right care for their loved ones
+                Seniors who found companionship. Students whose lives shifted.
               </p>
             </div>
             <div className="fade-up">
@@ -393,34 +455,68 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── CTA ─── */}
-        <section className="relative py-10 md:py-16 overflow-hidden">
-          {/* Background */}
+        {/* ─── TRANSPARENCY ─── */}
+        <section className="py-10 md:py-14">
+          <div className="max-w-3xl mx-auto px-4 text-center fade-up">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Shield className="h-5 w-5 text-primary" />
+              <span className="section-badge">Fully Social, Fully Open</span>
+            </div>
+            <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">
+              We do not earn profit from your care.
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Contribution-based — free where the family cannot afford.
+              Annual impact report published openly once registration completes (July–August 2026).
+              Section 8 Company registration in process. Transparent on every step.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-700 px-3 py-1.5 font-semibold">
+                <Clock className="h-3.5 w-3.5" /> Since Feb 2024
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 font-semibold">
+                <MapPin className="h-3.5 w-3.5" /> Pune, Maharashtra
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 text-amber-700 px-3 py-1.5 font-semibold">
+                <Award className="h-3.5 w-3.5" /> Azim Premji 2nd Place
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── FINAL CTA ─── */}
+        <section className="relative py-12 md:py-16 overflow-hidden">
           <div className="absolute inset-0 bg-linear-to-br from-secondary-dark via-secondary to-primary-dark" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,122,87,0.3),transparent_60%)]" />
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary/20 blur-3xl" />
-
-          <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
+          <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">
-              Ready to Get Started?
+              Be Part of This
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-white/80 max-w-xl mx-auto">
-              Whether your parents need a caring companion or you&apos;re a student who wants to make a difference — we&apos;re here
+            <p className="mt-3 text-sm sm:text-base text-white/85 max-w-xl mx-auto">
+              Whether you need care for a loved one, want meaningful work, or want to back the mission — there is a door for you.
             </p>
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <div className="mt-7 flex flex-col sm:flex-row justify-center gap-3">
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-secondary-dark hover:bg-white/90 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base shadow-xl transition-all hover:-translate-y-0.5"
+                className="bg-white text-secondary-dark hover:bg-white/90 h-12 md:h-13 px-7 font-bold rounded-xl text-sm md:text-base shadow-xl"
               >
                 <Link href="/post-work">
-                  Post a Work
-                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+                  Request Care
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <ApplyWorkButton className="border-2 border-white text-white hover:bg-white/10 h-12 md:h-14 px-8 md:px-10 font-bold rounded-xl text-sm md:text-base transition-all hover:-translate-y-0.5">
-                Become a Helper
-              </ApplyWorkButton>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/10 bg-transparent h-12 md:h-13 px-7 font-bold rounded-xl text-sm md:text-base"
+              >
+                <Link href="/for-students">
+                  Become a Caregiver
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

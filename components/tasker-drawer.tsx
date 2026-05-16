@@ -31,9 +31,9 @@ export function TaskerDrawerProvider({ children }: { children: ReactNode }) {
         <DrawerContent className="max-h-[90vh]">
           <div className="flex items-center justify-between px-4 pt-1 pb-0">
             <DrawerHeader className="p-0">
-              <DrawerTitle className="text-base font-bold">Apply for Work</DrawerTitle>
+              <DrawerTitle className="text-base font-bold">Be Part of This</DrawerTitle>
               <DrawerDescription className="text-xs">
-                Register as a student helper
+                Join the Work4U caregiver movement
               </DrawerDescription>
             </DrawerHeader>
             <DrawerClose className="p-1.5 -mr-1 rounded-full hover:bg-muted transition-colors">
